@@ -1,0 +1,29 @@
+THE FIRST LEAK SIGNAL SHOULD NOT BE THE WATER BILL
+
+DEWA's leak-alert data shows why anomaly-to-action time belongs on the operations dashboard.
+
+DEWA reported that its High Water Usage Alert service identified 2,663,444 post-meter leaks over six years to 31 December 2024. The service contributed to a reported reduction of 266,706 tonnes of carbon emissions over the same period.
+
+THE USEFUL OPERATING LOOP
+
+1. Baseline: Learn normal use by hour, asset and zone.
+2. Anomaly: Flag the unusual pattern while it is small.
+3. Action: Route, repair and confirm the return to normal.
+
+PORTFOLIO MOVE
+Track anomaly-to-work-order and work-order-to-resolution time across every site.
+
+Source:
+https://dewa.gov.ae/en/about-us/media-publications/latest-news/2025/04/dewa-tool-to-detect-water-leaks
+
+ABOUT CONNECTME
+ConnectME links smart water meters, leak sensors, remote gateways and alert workflows for multi-site operators.
+
+Continue the conversation:
+https://calendly.com/connectme_solutions/30min
+
+ConnectME Manufacturing LLC
+Dubai, UAE
+sales@connectme.biz | +971 4 234 8480 | https://connectme.biz/
+
+Unsubscribe: {{ unsubscribe }}

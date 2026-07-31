@@ -1,0 +1,32 @@
+WHEN COOLING COSTS RISE, FOLLOW THE METERING TRAIL
+
+Dubai's district-cooling framework makes the meter, allocation and invoice one continuous evidence chain.
+
+Fair cooling charges depend on more than a working BTU meter. Four confidence checks matter:
+
+1. Meter health: reading continuity, calibration and fault history.
+2. Thermal inputs: flow and temperature values make energy visible.
+3. Tenant allocation: the right consumption reaches the right account.
+4. Billing logic: tariffs and adjustments remain reviewable.
+
+Meter -> Validate -> Allocate -> Invoice
+
+CONTROL CHECK
+Can your team explain a cooling invoice from field reading to tenant account in one sitting?
+
+Sources and further reading:
+https://rsbdubai.gov.ae/en/regulating-efficient-cooling
+https://rsbdubai.gov.ae/media/0ena3rxj/rd06-metering-and-billing-v11.pdf
+https://connectme.biz/news/meydan-district-cooling-growth-raises-the-bar-for-btu-metering-and-billing-data
+
+ABOUT CONNECTME
+ConnectME supports BTU metering, M-Bus data collection, AMR/MDMS and tenant billing workflows across GCC properties.
+
+Continue the conversation:
+https://calendly.com/connectme_solutions/30min
+
+ConnectME Manufacturing LLC
+Dubai, UAE
+sales@connectme.biz | +971 4 234 8480 | https://connectme.biz/
+
+Unsubscribe: {{ unsubscribe }}

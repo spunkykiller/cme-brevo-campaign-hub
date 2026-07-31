@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ConnectME Bulk Email Visual Draft</title>
+  <style>
+    @font-face {
+      font-family: "Oxygen";
+      src: url("assets/Oxygen-Regular.ttf") format("truetype");
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Oxygen";
+      src: url("assets/Oxygen-Bold.ttf") format("truetype");
+      font-weight: 700;
+    }
+
+    @font-face {
+      font-family: "Oxygen";
+      src: url("assets/Oxygen-Light.ttf") format("truetype");
+      font-weight: 300;
+    }
+
+    :root {
+      --cme-blue: #25a9e0;
+      --cme-deep: #113a5c;
+      --cme-navy: #0b2438;
+      --cme-orange: #f28c18;
+      --cme-magenta: #b20a9f;
+      --cme-green: #28a96b;
+      --cme-ink: #162434;
+      --cme-muted: #647486;
+      --cme-line: #d9e5ee;
+      --cme-soft: #f4f9fc;
+      --cme-card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        linear-gradient(180deg, #eaf3f8 0%, #f6fafc 45%, #e9f3f7 100%);
+      color: var(--cme-ink);
+      font-family: "Oxygen", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    .stage {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 34px 20px 56px;
+    }
+
+    .draft-label {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto 14px;
+      color: #5d7081;
+      font-size: 12px;
+      line-height: 1.45;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .email {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #cfdee8;
+      box-shadow: 0 24px 80px rgba(17, 58, 92, 0.14);
+      overflow: hidden;
+    }
+
+    .topbar {
+      padding: 22px 28px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid #e0ebf2;
+      background: #ffffff;
+    }
+
+    .brand-logo {
+      width: 174px;
+      height: auto;
+      display: block;
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .trust-chip {
+      padding: 6px 8px;
+      border: 1px solid #d6e4ed;
+      border-radius: 4px;
+      color: #37566c;
+      background: #f7fbfd;
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 26px;
+      padding: 36px 30px 34px;
+      background:
+        radial-gradient(circle at 92% 12%, rgba(178, 10, 159, 0.13), transparent 27%),
+        radial-gradient(circle at 62% 84%, rgba(242, 140, 24, 0.14), transparent 32%),
+        linear-gradient(135deg, #f7fcff 0%, #e8f6fd 47%, #ffffff 100%);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--cme-deep);
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: var(--cme-navy);
+      font-size: 43px;
+      line-height: 0.98;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .hero h1 span {
+      color: var(--cme-blue);
+      display: block;
+    }
+
+    .hero-copy {
+      margin: 16px 0 0;
+      color: #41576b;
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 335px;
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--cme-orange);
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(242, 140, 24, 0.24);
+    }
+
+    .button.secondary {
+      background: #ffffff;
+      color: var(--cme-deep);
+      border: 1px solid #c9dae5;
+    }
+
+    .hero-visual {
+      min-height: 330px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .network-card {
+      width: 100%;
+      min-height: 316px;
+      position: relative;
+      border: 1px solid rgba(37, 169, 224, 0.22);
+      border-radius: 8px;
+      background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(240, 248, 252, 0.94)),
+        repeating-linear-gradient(90deg, transparent 0 34px, rgba(37, 169, 224, 0.055) 34px 35px);
+      overflow: hidden;
+    }
+
+    .network-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cloud-node {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 132px;
+      min-height: 74px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      padding: 0;
+      background: transparent;
+      color: var(--cme-deep);
+      text-align: center;
+      filter: drop-shadow(0 16px 24px rgba(17, 58, 92, 0.24));
+    }
+
+    .cloud-node img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .cloud-node strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.1;
+    }
+
+    .cloud-node small {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 10px;
+      line-height: 1.25;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .orbit-item {
+      position: absolute;
+      width: 108px;
+      padding: 8px;
+      border: 1px solid #dae8f0;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(20, 63, 91, 0.12);
+      text-align: center;
+    }
+
+    .orbit-item img {
+      width: 100%;
+      height: 58px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .orbit-item span {
+      display: block;
+      margin-top: 5px;
+      color: #23485e;
+      font-size: 9px;
+      line-height: 1.15;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .orbit-item.meter {
+      left: 14px;
+      top: 20px;
+    }
+
+    .orbit-item.valve {
+      right: 18px;
+      top: 22px;
+    }
+
+    .orbit-item.sensor {
+      left: 22px;
+      bottom: 20px;
+    }
+
+    .orbit-item.edge {
+      right: 24px;
+      bottom: 20px;
+    }
+
+    .section {
+      padding: 31px 30px;
+      border-top: 1px solid #e2edf3;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      margin: 0 0 6px;
+      color: var(--cme-orange);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--cme-navy);
+      font-size: 25px;
+      line-height: 1.12;
+      font-weight: 700;
+    }
+
+    .section-note {
+      max-width: 240px;
+      margin: 0;
+      color: #607486;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .system-map {
+      padding: 18px;
+      border: 1px solid #d9e7ef;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, #ffffff 0%, #f6fbfd 100%);
+    }
+
+    .map-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .map-node {
+      position: relative;
+      min-height: 112px;
+      padding: 12px 10px;
+      border: 1px solid #d8e6ee;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .map-node::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      width: 12px;
+      height: 2px;
+      background: #9acdde;
+    }
+
+    .map-node:last-child::after {
+      display: none;
+    }
+
+    .map-node strong {
+      display: block;
+      color: #113a5c;
+      font-size: 13px;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+
+    .map-node span {
+      display: block;
+      margin-top: 8px;
+      color: #6a7b89;
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .node-dot {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .node-blue { background: var(--cme-blue); }
+    .node-orange { background: var(--cme-orange); }
+    .node-green { background: var(--cme-green); }
+    .node-magenta { background: var(--cme-magenta); }
+    .node-navy { background: var(--cme-deep); }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .product-card {
+      min-height: 278px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #dce9f0;
+      border-radius: 8px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .product-visual {
+      height: 126px;
+      display: grid;
+      place-items: center;
+      padding: 12px;
+      background:
+        linear-gradient(135deg, #f8fbfd, #edf7fb);
+      border-bottom: 1px solid #e3edf3;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-visual img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 18px rgba(17, 58, 92, 0.18));
+    }
+
+    .product-body {
+      padding: 14px 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+      background: #ffffff;
+    }
+
+    .product-tag {
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 9px;
+      padding: 5px 7px;
+      border-radius: 4px;
+      color: #ffffff;
+      font-size: 9px;
+      line-height: 1;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .tag-blue { background: var(--cme-blue); }
+    .tag-orange { background: var(--cme-orange); }
+    .tag-green { background: var(--cme-green); }
+    .tag-magenta { background: var(--cme-magenta); }
+    .tag-navy { background: var(--cme-deep); }
+
+    .product-body h3 {
+      margin: 0;
+      color: #102f49;
+      font-size: 16px;
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    .product-body p {
+      margin: 9px 0 0;
+      color: #5f7181;
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    .use-case-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .use-case {
+      border: 1px solid #dce9f0;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 15px;
+      min-height: 124px;
+    }
+
+    .use-case strong {
+      display: block;
+      color: #123953;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .use-case span {
+      display: block;
+      margin-top: 8px;
+      color: #607486;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .ecosystem-strip {
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid #dce9f0;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbfd 100%);
+    }
+
+    .ecosystem-title {
+      margin: 0 0 12px;
+      color: #123953;
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .logo-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .sub-logo {
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #dfebf2;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .sub-logo img {
+      max-width: 100%;
+      max-height: 34px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .sub-logo img.tall-logo {
+      max-height: 42px;
+    }
+
+    .cta {
+      padding: 32px 30px 34px;
+      color: #ffffff;
+      background:
+        linear-gradient(135deg, #0b2438 0%, #144763 56%, #0f314a 100%);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.14;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .cta p {
+      max-width: 440px;
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .cta .button.secondary {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.34);
+    }
+
+    .footer {
+      padding: 18px 30px 24px;
+      background: #f5f9fb;
+      border-top: 1px solid #dce8ef;
+      color: #607486;
+      font-size: 11px;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .footer strong {
+      color: #173d59;
+    }
+
+    .mobile-note {
+      width: 100%;
+      max-width: 760px;
+      margin: 16px auto 0;
+      color: #607486;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 720px) {
+      .stage {
+        padding: 16px 10px 34px;
+      }
+
+      .topbar,
+      .section-header,
+      .cta-grid {
+        display: block;
+      }
+
+      .trust-row {
+        justify-content: flex-start;
+        margin-top: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 28px 20px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero-copy,
+      .section-note {
+        max-width: none;
+      }
+
+      .map-row,
+      .product-grid,
+      .use-case-band,
+      .logo-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .map-node::after {
+        top: auto;
+        right: auto;
+        bottom: -11px;
+        left: 22px;
+        width: 2px;
+        height: 12px;
+      }
+
+      .cta-actions {
+        margin-top: 18px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .stage {
+        padding: 0;
+      }
+
+      .draft-label,
+      .mobile-note {
+        display: none;
+      }
+
+      .email {
+        box-shadow: none;
+        border: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <article class="email">
+      <header class="topbar">
+        <img class="brand-logo" src="assets/connectme_logo_cropped.png" alt="ConnectME">
+        <div class="trust-row" aria-label="Certification and trust signals">
+          <span class="trust-chip">ISO 9001:2015</span>
+          <span class="trust-chip">ISO 14001:2015</span>
+          <span class="trust-chip">ISO 45001:2018</span>
+          <span class="trust-chip">Made in UAE</span>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Smart utility and infrastructure solutions</p>
+          <h1>Connect meters, billing, monitoring <span>and control.</span></h1>
+          <p class="hero-copy">
+            End-to-end IoT systems for buildings, communities, utilities and industrial infrastructure across the GCC and MENA region.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:info@connectme.biz">Request Catalogue</a>
+            <a class="button secondary" href="https://connectme.biz">View Solutions</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Connected infrastructure visual">
+          <div class="network-card">
+            <svg class="network-lines" viewBox="0 0 360 316" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M65 65 C120 55, 122 150, 180 158 S263 70, 302 70" fill="none" stroke="#25a9e0" stroke-width="2" stroke-dasharray="6 8" opacity="0.78"/>
+              <path d="M72 252 C116 225, 128 173, 180 158 S255 230, 292 248" fill="none" stroke="#b20a9f" stroke-width="2" stroke-dasharray="5 7" opacity="0.62"/>
+              <path d="M180 158 C180 115, 180 106, 180 84" fill="none" stroke="#f28c18" stroke-width="2" opacity="0.68"/>
+              <path d="M180 158 C180 204, 180 220, 180 246" fill="none" stroke="#28a96b" stroke-width="2" opacity="0.68"/>
+              <circle cx="65" cy="65" r="5" fill="#25a9e0"/>
+              <circle cx="302" cy="70" r="5" fill="#f28c18"/>
+              <circle cx="72" cy="252" r="5" fill="#b20a9f"/>
+              <circle cx="292" cy="248" r="5" fill="#28a96b"/>
+            </svg>
+            <div class="cloud-node">
+              <img src="assets/connectme_cloud_logo.png" alt="ConnectME cloud operating layer">
+            </div>
+            <div class="orbit-item meter">
+              <img src="assets/EnhancedBTU-flow.png" alt="Clamp-on BTU and flow meter">
+              <span>Meters</span>
+            </div>
+            <div class="orbit-item valve">
+              <img src="assets/SmartValve Compact.png" alt="Smart compact valve">
+              <span>Valves</span>
+            </div>
+            <div class="orbit-item sensor">
+              <img src="assets/wirelessleakDetection.png" alt="Wireless leak detection sensor">
+              <span>Sensors</span>
+            </div>
+            <div class="orbit-item edge">
+              <img src="assets/EdgeController.png" alt="UCONNECT Edge gateway">
+              <span>Gateways</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">How it fits</p>
+            <h2 class="section-title">From field devices to billing, BMS and cloud.</h2>
+          </div>
+          <p class="section-note">Built for utility billing, field monitoring, automation, integration and long-term service support.</p>
+        </div>
+
+        <div class="system-map">
+          <div class="map-row">
+            <div class="map-node">
+              <div class="node-dot node-blue">1</div>
+              <strong>Meters</strong>
+              <span>BTU, water, gas, flow and energy data from site infrastructure.</span>
+            </div>
+            <div class="map-node">
+              <div class="node-dot node-orange">2</div>
+              <strong>Sensors and valves</strong>
+              <span>Leak alerts, IAQ, flood level monitoring and remote shutoff.</span>
+            </div>
+            <div class="map-node">
+              <div class="node-dot node-magenta">3</div>
+              <strong>UCONNECT Edge</strong>
+              <span>M-Bus, Modbus, BACnet, LoRaWAN, MQTT and secure gateways.</span>
+            </div>
+            <div class="map-node">
+              <div class="node-dot node-green">4</div>
+              <strong>Software</strong>
+              <span>UBILL, AMR, MDMS, UENERGY, VCM, MMS and dashboards.</span>
+            </div>
+            <div class="map-node">
+              <div class="node-dot node-navy">5</div>
+              <strong>Service</strong>
+              <span>Design support, commissioning, AMC, maintenance and training.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Solution areas</p>
+            <h2 class="section-title">One portfolio, many infrastructure needs.</h2>
+          </div>
+          <p class="section-note">A connected portfolio for metering, control, monitoring, software and integration projects.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-visual">
+              <img src="assets/seg1_ubill_dashboard.png" alt="UBILL dashboard visual">
+            </div>
+            <div class="product-body">
+              <span class="product-tag tag-orange">Billing</span>
+              <h3>UBILL Billing and AMR</h3>
+              <p>Automated meter reading, multi-utility billing, reports, dashboards and revenue assurance workflows.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <img src="assets/EnhancedBTU-flow.png" alt="Techknave enhanced clamp-on BTU flow meter">
+            </div>
+            <div class="product-body">
+              <span class="product-tag tag-blue">Metering</span>
+              <h3>BTU, water, gas and flow meters</h3>
+              <p>UFLO, Techknave and GasKonnect metering options for billing, performance analysis and monitoring.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <img src="assets/SmartValve Compact.png" alt="Techknave smart compact valve">
+            </div>
+            <div class="product-body">
+              <span class="product-tag tag-magenta">Control</span>
+              <h3>Smart valves and remote shutoff</h3>
+              <p>Valve control for chilled water, utility lines, gas solenoids, non-payment workflows and leak response.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <img src="assets/wirelessleakDetection.png" alt="Wireless water leak detection product">
+            </div>
+            <div class="product-body">
+              <span class="product-tag tag-green">Alerts</span>
+              <h3>Leak, flood and IAQ monitoring</h3>
+              <p>Wireless and wired sensors for water leak detection, pump room alerts and indoor air quality visibility.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <img src="assets/UconnectMbus.png" alt="UCONNECT M-Bus master">
+            </div>
+            <div class="product-body">
+              <span class="product-tag tag-navy">Integration</span>
+              <h3>Gateways and protocol converters</h3>
+              <p>UCONNECT M-Bus, Modbus, BACnet, LoRaWAN and Edge gateways for BMS, SCADA and cloud integration.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <img src="assets/gasKonnectController.png" alt="GasKonnect controller">
+            </div>
+            <div class="product-body">
+              <span class="product-tag tag-orange">Gas</span>
+              <h3>GasKonnect controllers</h3>
+              <p>Gas meter reading, pulse conversion, solenoid control and monitoring for utility and safety applications.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Project-fit examples</p>
+            <h2 class="section-title">Built for real operating environments.</h2>
+          </div>
+        </div>
+
+        <div class="use-case-band">
+          <div class="use-case">
+            <strong>Buildings and communities</strong>
+            <span>Centralized utility billing, AMR, smart valves, leak detection, pump rooms, energy dashboards and street lighting.</span>
+          </div>
+          <div class="use-case">
+            <strong>Industry and infrastructure</strong>
+            <span>Edge gateways, protocol conversion, remote monitoring, PLC/SCADA integration, secure access and maintenance services.</span>
+          </div>
+          <div class="use-case">
+            <strong>Billing and utility providers</strong>
+            <span>Meter data validation, tenant billing, invoice workflows, customer transparency and meter maintenance support.</span>
+          </div>
+          <div class="use-case">
+            <strong>Consultants and integrators</strong>
+            <span>Local product availability, technical documentation, system architecture support and commissioning assistance.</span>
+          </div>
+        </div>
+
+        <div class="ecosystem-strip">
+          <p class="ecosystem-title">ConnectME ecosystem brands</p>
+          <div class="logo-strip" aria-label="ConnectME ecosystem brands">
+            <div class="sub-logo"><img src="assets/logo_ubill.png" alt="UBILL"></div>
+            <div class="sub-logo"><img src="assets/logo_uconnect.png" alt="UCONNECT"></div>
+            <div class="sub-logo"><img src="assets/logo_uenergy.png" alt="UENERGY"></div>
+            <div class="sub-logo"><img class="tall-logo" src="assets/logo_gaskonnect.png" alt="GasKonnect"></div>
+            <div class="sub-logo"><img class="tall-logo" src="assets/logo_techknave.png" alt="Techknave"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="cta-grid">
+          <div>
+            <h2>Planning a new project or upgrading existing infrastructure?</h2>
+            <p>Share your utility, metering, monitoring or integration requirement. The ConnectME team can recommend the right product and system architecture.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="button primary" href="mailto:info@connectme.biz">Request Catalogue</a>
+            <a class="button secondary" href="https://calendly.com/connectme_solutions/30min">Book Discussion</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <strong>ConnectME Manufacturing LLC | ConnectME Technology Solutions FZCO</strong><br>
+        Warehouse-7, Al Qaseer Warehouse, Ras Al Khor Industrial Area-2, Dubai, UAE<br>
+        info@connectme.biz | +971 4 234 8480 | +971 56 22 50 600 | connectme.biz
+      </footer>
+    </article>
+
+  </main>
+
+<!-- CME BREVO CAMPAIGN HUB FLOATING HEADER & ANALYTICS EMBED -->
+<style>
+  #cme-hub-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 999999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  #cme-hub-header a.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    background: rgba(56, 189, 248, 0.12);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    transition: all 0.2s ease;
+  }
+  #cme-hub-header a.back-btn:hover {
+    background: rgba(56, 189, 248, 0.25);
+    transform: translateY(-1px);
+  }
+  #cme-hub-header .campaign-title-badge {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  #cme-hub-header .status-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tag-sent { background: #059669; color: #ecfdf5; }
+  .tag-ready { background: #0284c7; color: #f0f9ff; }
+  .tag-scheduled { background: #d97706; color: #fffbeb; }
+
+  #cme-hub-header .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn-analytics-toggle {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #ffffff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+    transition: all 0.2s ease;
+  }
+  .btn-analytics-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
+  }
+  .campaign-switcher-select {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #475569;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+  }
+
+  body {
+    padding-top: 56px !important;
+  }
+
+  /* MODAL STYLING */
+  #cme-analytics-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 9999999;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  #cme-analytics-modal.active { display: flex; }
+  .modal-content {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 720px;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 28px;
+    color: #f8fafc;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: #1e293b;
+    color: #94a3b8;
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-close:hover { color: #fff; background: #334155; }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .metric-card {
+    background: #1e293b;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    text-align: center;
+  }
+  .metric-val {
+    font-size: 22px;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-top: 4px;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .insights-box {
+    background: rgba(99, 102, 241, 0.1);
+    border-left: 4px solid #6366f1;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #e0e7ff;
+  }
+</style>
+
+<div id="cme-hub-header">
+  <a href="../index.html" class="back-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Brevo Email Hub
+  </a>
+
+  <div class="campaign-title-badge">
+    <span>Campaign 1: Product & Services Introduction</span>
+    <span class="status-tag tag-sent">SENT</span>
+  </div>
+
+  <div class="header-actions">
+    <button class="btn-analytics-toggle" onclick="toggleAnalyticsModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      Brevo Insights
+    </button>
+    <select class="campaign-switcher-select" onchange="window.location.href=this.value">
+      <option value="">Switch Campaign...</option>
+      <option value="../01_campaign_1_original/index.html">Campaign 1: Product Intro</option>
+      <option value="../02_campaign_2_newsletter/index.html">Campaign 2: Utility Intelligence</option>
+      <option value="../03_campaign_3_report_confidence/index.html">Campaign 3: GCC Industrial AI</option>
+      <option value="../04_campaign_4_savings_proof/index.html">Campaign 4: Savings Proof</option>
+      <option value="../05_campaign_5_meter_backed_savings/index.html">Campaign 5: Meter Savings</option>
+      <option value="../06_campaign_6_cooling_bill_trail/index.html">Campaign 6: Cooling Bill Trail</option>
+      <option value="../07_campaign_7_water_anomaly/index.html">Campaign 7: Leak Alerts</option>
+      <option value="../08_campaign_8_data_path/index.html">Campaign 8: Industrial Data Path</option>
+    </select>
+  </div>
+</div>
+
+<!-- ANALYTICS MODAL -->
+<div id="cme-analytics-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="toggleAnalyticsModal()">&times;</button>
+    <h2 style="margin:0 0 6px 0; font-size: 20px; color:#f8fafc;">Campaign 1: Product & Services Introduction</h2>
+    <p style="margin:0; font-size: 13px; color: #94a3b8;">Subject: <i>"Connect meters, billing, monitoring and control"</i></p>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Delivered</div>
+        <div class="metric-val" style="color:#38bdf8;">2,411</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Unique Open Rate</div>
+        <div class="metric-val" style="color:#34d399;">42.85%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Click-to-Open (CTOR)</div>
+        <div class="metric-val" style="color:#a78bfa;">4.55%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Hard Bounce Rate</div>
+        <div class="metric-val" style="color:#f87171;">11.02%</div>
+      </div>
+    </div>
+
+    <div class="insights-box">
+      <strong>💡 Brevo Performance Insight:</strong><br/>
+      Initial baseline broadcast. Achieved very high initial curiosity (42.85% open rate) but early lists contained uncleaned bounce records.
+    </div>
+
+    <div style="margin-top:20px; font-size:12px; color:#64748b; display:flex; justify-content:space-between;">
+      <span>Sent Date: 2026-05-18</span>
+      <span>Unsubscribes: 8</span>
+      <a href="https://cme-brevo-campaign-1.vercel.app" target="_blank" style="color:#38bdf8; text-decoration:none;">🔗 Standalone Vercel Link</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAnalyticsModal() {
+    const modal = document.getElementById('cme-analytics-modal');
+    modal.classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
