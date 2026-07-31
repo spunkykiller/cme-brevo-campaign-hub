@@ -148,59 +148,51 @@
       padding: 12px;
       border-radius: 12px;
       margin-bottom: 20px;
-      border: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
     }
-    .c-metric-val { font-size: 15px; font-weight: 700; color: #ffffff; }
+    .c-metric-val { font-size: 14px; font-weight: 700; color: #fff; }
     .c-metric-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-top: 2px; }
 
-    .card-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .card-actions { display: flex; flex-direction: column; gap: 10px; }
     .btn-primary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: linear-gradient(135deg, #0284c7, #0369a1);
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
       color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
       padding: 12px;
       border-radius: 12px;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #0369a1, #075985);
-      transform: translateY(-1px);
-    }
-    .btn-secondary-row {
+      text-align: center;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
       display: flex;
-      gap: 8px;
-    }
-    .btn-secondary {
-      flex: 1;
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    }
+    .btn-secondary-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btn-secondary {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
       padding: 10px;
       border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
       cursor: pointer;
+      text-align: center;
+      text-decoration: none;
       transition: all 0.2s ease;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
     }
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
     }
 
     /* MODAL */
@@ -225,6 +217,12 @@
       color: #fff;
       position: relative;
       box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+    .hub-modal-close {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,0.08); border: none;
+      color: var(--text-muted); width: 32px; height: 32px;
+      border-radius: 50%; cursor: pointer; font-size: 18px;
     }
   </style>
 </head>
@@ -297,7 +295,8 @@
           </div>
         </div>
       </article>
-      
+  
+
       <article class="campaign-card">
         <div>
           <div class="card-top">
@@ -338,7 +337,8 @@
           </div>
         </div>
       </article>
-      
+  
+
       <article class="campaign-card">
         <div>
           <div class="card-top">
@@ -379,142 +379,20 @@
           </div>
         </div>
       </article>
-      
+  
+
       <article class="campaign-card">
         <div>
           <div class="card-top">
-            <span class="card-id">#4 , #1-#2_brevo</span>
-            <span class="card-tag tag-ready">READY</span>
-          </div>
-          <h2 class="card-title">Campaign 4: Savings Proof & Meter Validation</h2>
-          <p class="card-subject">"Verifiable Energy & Water Savings Proof for Commercial Assets"</p>
-
-          <div class="card-metrics-row">
-            <div>
-              <div class="c-metric-val" style="color:#38bdf8;">2,537</div>
-              <div class="c-metric-lbl">Delivered</div>
-            </div>
-            <div>
-              <div class="c-metric-val" style="color:#34d399;">Target > 35.0%</div>
-              <div class="c-metric-lbl">Open Rate</div>
-            </div>
-            <div>
-              <div class="c-metric-val" style="color:#a78bfa;">Target > 5.0%</div>
-              <div class="c-metric-lbl">CTOR</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-actions">
-          <a href="./04_campaign_4_savings_proof/index.html" class="btn-primary" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            View Visual Email Design
-          </a>
-          <div class="btn-secondary-row">
-            <button class="btn-secondary" onclick="openHubModal('04_campaign_4_savings_proof')">
-              📊 Analytics
-            </button>
-            <a href="https://cme-brevo-campaign-4.vercel.app" target="_blank" class="btn-secondary">
-              🔗 Vercel Link
-            </a>
-          </div>
-        </div>
-      </article>
-      
-      <article class="campaign-card">
-        <div>
-          <div class="card-top">
-            <span class="card-id">#5 , #4_brevo</span>
-            <span class="card-tag tag-ready">READY</span>
-          </div>
-          <h2 class="card-title">Campaign 5: Meter Backed Savings Briefing</h2>
-          <p class="card-subject">"How Meter-Backed Data Eliminates Utility Billing Waste"</p>
-
-          <div class="card-metrics-row">
-            <div>
-              <div class="c-metric-val" style="color:#38bdf8;">2,537</div>
-              <div class="c-metric-lbl">Delivered</div>
-            </div>
-            <div>
-              <div class="c-metric-val" style="color:#34d399;">Target > 35.0%</div>
-              <div class="c-metric-lbl">Open Rate</div>
-            </div>
-            <div>
-              <div class="c-metric-val" style="color:#a78bfa;">Target > 5.0%</div>
-              <div class="c-metric-lbl">CTOR</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-actions">
-          <a href="./05_campaign_5_meter_backed_savings/index.html" class="btn-primary" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            View Visual Email Design
-          </a>
-          <div class="btn-secondary-row">
-            <button class="btn-secondary" onclick="openHubModal('05_campaign_5_meter_backed_savings')">
-              📊 Analytics
-            </button>
-            <a href="https://cme-brevo-campaign-5.vercel.app" target="_blank" class="btn-secondary">
-              🔗 Vercel Link
-            </a>
-          </div>
-        </div>
-      </article>
-      
-      <article class="campaign-card">
-        <div>
-          <div class="card-top">
-            <span class="card-id">#6 , #5-#7_brevo</span>
-            <span class="card-tag tag-ready">READY</span>
-          </div>
-          <h2 class="card-title">Campaign 6: Cooling Bill Audit Trail</h2>
-          <p class="card-subject">"Auditing Chilled Water & Cooling Bill Anomalies Before Invoicing"</p>
-
-          <div class="card-metrics-row">
-            <div>
-              <div class="c-metric-val" style="color:#38bdf8;">2,537</div>
-              <div class="c-metric-lbl">Delivered</div>
-            </div>
-            <div>
-              <div class="c-metric-val" style="color:#34d399;">Target > 35.0%</div>
-              <div class="c-metric-lbl">Open Rate</div>
-            </div>
-            <div>
-              <div class="c-metric-val" style="color:#a78bfa;">Target > 5.0%</div>
-              <div class="c-metric-lbl">CTOR</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card-actions">
-          <a href="./06_campaign_6_cooling_bill_trail/index.html" class="btn-primary" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            View Visual Email Design
-          </a>
-          <div class="btn-secondary-row">
-            <button class="btn-secondary" onclick="openHubModal('06_campaign_6_cooling_bill_trail')">
-              📊 Analytics
-            </button>
-            <a href="https://cme-brevo-campaign-6.vercel.app" target="_blank" class="btn-secondary">
-              🔗 Vercel Link
-            </a>
-          </div>
-        </div>
-      </article>
-      
-      <article class="campaign-card">
-        <div>
-          <div class="card-top">
-            <span class="card-id">#7 , #29_brevo</span>
+            <span class="card-id">#4 , #29_brevo</span>
             <span class="card-tag tag-scheduled">SCHEDULED</span>
           </div>
-          <h2 class="card-title">Campaign 7: Water Anomaly Leak Alerts</h2>
+          <h2 class="card-title">Campaign 4: Water Anomaly Leak Alerts</h2>
           <p class="card-subject">"The First Leak Signal Should Not Be the Water Bill"</p>
 
           <div class="card-metrics-row">
             <div>
-              <div class="c-metric-val" style="color:#38bdf8;">2,537</div>
+              <div class="c-metric-val" style="color:#38bdf8;">2,537 Target</div>
               <div class="c-metric-lbl">Delivered</div>
             </div>
             <div>
@@ -537,13 +415,140 @@
             <button class="btn-secondary" onclick="openHubModal('07_campaign_7_water_anomaly')">
               📊 Analytics
             </button>
+            <a href="https://cme-brevo-campaign-4.vercel.app" target="_blank" class="btn-secondary">
+              🔗 Vercel Link
+            </a>
+          </div>
+        </div>
+      </article>
+  
+
+      <article class="campaign-card">
+        <div>
+          <div class="card-top">
+            <span class="card-id">#5 , #1-#2_brevo</span>
+            <span class="card-tag tag-ready">READY</span>
+          </div>
+          <h2 class="card-title">Campaign 5: Savings Proof & Meter Validation</h2>
+          <p class="card-subject">"Verifiable Energy & Water Savings Proof for Commercial Assets"</p>
+
+          <div class="card-metrics-row">
+            <div>
+              <div class="c-metric-val" style="color:#38bdf8;">2,537 Target</div>
+              <div class="c-metric-lbl">Delivered</div>
+            </div>
+            <div>
+              <div class="c-metric-val" style="color:#34d399;">Target > 35.0%</div>
+              <div class="c-metric-lbl">Open Rate</div>
+            </div>
+            <div>
+              <div class="c-metric-val" style="color:#a78bfa;">Target > 5.0%</div>
+              <div class="c-metric-lbl">CTOR</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <a href="./04_campaign_4_savings_proof/index.html" class="btn-primary" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View Visual Email Design
+          </a>
+          <div class="btn-secondary-row">
+            <button class="btn-secondary" onclick="openHubModal('04_campaign_4_savings_proof')">
+              📊 Analytics
+            </button>
+            <a href="https://cme-brevo-campaign-5.vercel.app" target="_blank" class="btn-secondary">
+              🔗 Vercel Link
+            </a>
+          </div>
+        </div>
+      </article>
+  
+
+      <article class="campaign-card">
+        <div>
+          <div class="card-top">
+            <span class="card-id">#6 , #4_brevo</span>
+            <span class="card-tag tag-ready">READY</span>
+          </div>
+          <h2 class="card-title">Campaign 6: Meter Backed Savings Briefing</h2>
+          <p class="card-subject">"How Meter-Backed Data Eliminates Utility Billing Waste"</p>
+
+          <div class="card-metrics-row">
+            <div>
+              <div class="c-metric-val" style="color:#38bdf8;">2,537 Target</div>
+              <div class="c-metric-lbl">Delivered</div>
+            </div>
+            <div>
+              <div class="c-metric-val" style="color:#34d399;">Target > 35.0%</div>
+              <div class="c-metric-lbl">Open Rate</div>
+            </div>
+            <div>
+              <div class="c-metric-val" style="color:#a78bfa;">Target > 5.0%</div>
+              <div class="c-metric-lbl">CTOR</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <a href="./05_campaign_5_meter_backed_savings/index.html" class="btn-primary" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View Visual Email Design
+          </a>
+          <div class="btn-secondary-row">
+            <button class="btn-secondary" onclick="openHubModal('05_campaign_5_meter_backed_savings')">
+              📊 Analytics
+            </button>
+            <a href="https://cme-brevo-campaign-6.vercel.app" target="_blank" class="btn-secondary">
+              🔗 Vercel Link
+            </a>
+          </div>
+        </div>
+      </article>
+  
+
+      <article class="campaign-card">
+        <div>
+          <div class="card-top">
+            <span class="card-id">#7 , #5-#7_brevo</span>
+            <span class="card-tag tag-ready">READY</span>
+          </div>
+          <h2 class="card-title">Campaign 7: Cooling Bill Audit Trail</h2>
+          <p class="card-subject">"Auditing Chilled Water & Cooling Bill Anomalies Before Invoicing"</p>
+
+          <div class="card-metrics-row">
+            <div>
+              <div class="c-metric-val" style="color:#38bdf8;">2,537 Target</div>
+              <div class="c-metric-lbl">Delivered</div>
+            </div>
+            <div>
+              <div class="c-metric-val" style="color:#34d399;">Target > 35.0%</div>
+              <div class="c-metric-lbl">Open Rate</div>
+            </div>
+            <div>
+              <div class="c-metric-val" style="color:#a78bfa;">Target > 5.0%</div>
+              <div class="c-metric-lbl">CTOR</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <a href="./06_campaign_6_cooling_bill_trail/index.html" class="btn-primary" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            View Visual Email Design
+          </a>
+          <div class="btn-secondary-row">
+            <button class="btn-secondary" onclick="openHubModal('06_campaign_6_cooling_bill_trail')">
+              📊 Analytics
+            </button>
             <a href="https://cme-brevo-campaign-7.vercel.app" target="_blank" class="btn-secondary">
               🔗 Vercel Link
             </a>
           </div>
         </div>
       </article>
-      
+  
+
       <article class="campaign-card">
         <div>
           <div class="card-top">
@@ -555,7 +560,7 @@
 
           <div class="card-metrics-row">
             <div>
-              <div class="c-metric-val" style="color:#38bdf8;">2,537</div>
+              <div class="c-metric-val" style="color:#38bdf8;">2,537 Target</div>
               <div class="c-metric-lbl">Delivered</div>
             </div>
             <div>
@@ -584,32 +589,209 @@
           </div>
         </div>
       </article>
-      
+  
   </main>
 
-  <div id="hub-modal" class="hub-modal">
+  <div id="hubModal" class="hub-modal">
     <div class="hub-modal-box">
-      <button onclick="closeHubModal()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:#94a3b8; font-size:20px; cursor:pointer;">&times;</button>
-      <h2 id="modal-title" style="margin-bottom:6px; font-size:20px; color:#fff;"></h2>
-      <p id="modal-subject" style="font-size:13px; color:#94a3b8; margin-bottom:20px; font-style:italic;"></p>
-      <div style="background:rgba(56,189,248,0.08); border-left:4px solid #38bdf8; padding:16px; border-radius:10px; font-size:13px; line-height:1.6; color:#e0f2fe;" id="modal-takeaway"></div>
+      <button class="hub-modal-close" onclick="closeHubModal()">&times;</button>
+      <div id="hubModalBody"></div>
     </div>
   </div>
 
   <script>
-    const metaData = {"01_campaign_1_original":{"id":1,"title":"Campaign 1: Product & Services Introduction","subject":"Connect meters, billing, monitoring and control","status":"SENT","sentDate":"2026-05-18","delivered":2411,"openRate":"42.85%","clickRate":"1.95%","ctor":"4.55%","bounces":"11.02%","unsubscribes":8,"keyTakeaway":"Initial baseline broadcast. Achieved very high initial curiosity (42.85% open rate) but early lists contained uncleaned bounce records."},"02_campaign_2_newsletter":{"id":2,"title":"Campaign 2: Live Utility Intelligence","subject":"Why live utility intelligence is replacing monthly reads","status":"SENT","sentDate":"2026-07-01","delivered":2369,"openRate":"37.86%","clickRate":"1.06%","ctor":"2.79%","bounces":"1.21%","unsubscribes":3,"keyTakeaway":"Strongest inbox subject line pattern. Direct operational framing reduced hard bounce rates to 1.21%."},"03_campaign_3_report_confidence":{"id":3,"title":"Campaign 3: GCC Industrial AI Execution","subject":"The GCC's Industrial AI Shift Has Entered the Execution Phase","status":"SENT","sentDate":"2026-07-15","delivered":2362,"openRate":"32.26%","clickRate":"1.78%","ctor":"5.51%","bounces":"0.12%","unsubscribes":4,"keyTakeaway":"Highest Click-to-Open Rate (5.51%)! Source-backed body copy earned maximum post-open reader engagement."},"04_campaign_4_savings_proof":{"id":4,"title":"Campaign 4: Savings Proof & Meter Validation","subject":"Verifiable Energy & Water Savings Proof for Commercial Assets","status":"READY","sentDate":"Industrial Series Send 4","delivered":2537,"openRate":"Target > 35.0%","clickRate":"Target > 2.0%","ctor":"Target > 5.0%","bounces":"< 0.5%","unsubscribes":0,"keyTakeaway":"Focuses on proof of utility savings and meter validation layers for facility operations teams."},"05_campaign_5_meter_backed_savings":{"id":5,"title":"Campaign 5: Meter Backed Savings Briefing","subject":"How Meter-Backed Data Eliminates Utility Billing Waste","status":"READY","sentDate":"Industrial Series Send 5","delivered":2537,"openRate":"Target > 35.0%","clickRate":"Target > 2.0%","ctor":"Target > 5.0%","bounces":"< 0.5%","unsubscribes":0,"keyTakeaway":"Translates raw sub-metering feeds into direct financial savings evidence for CFOs and property managers."},"06_campaign_6_cooling_bill_trail":{"id":6,"title":"Campaign 6: Cooling Bill Audit Trail","subject":"Auditing Chilled Water & Cooling Bill Anomalies Before Invoicing","status":"READY","sentDate":"Industrial Series Send 6","delivered":2537,"openRate":"Target > 35.0%","clickRate":"Target > 2.0%","ctor":"Target > 5.0%","bounces":"< 0.5%","unsubscribes":0,"keyTakeaway":"Targets GCC summer cooling surges and chilled water BTU metering accuracy for commercial towers."},"07_campaign_7_water_anomaly":{"id":7,"title":"Campaign 7: Water Anomaly Leak Alerts","subject":"The First Leak Signal Should Not Be the Water Bill","status":"SCHEDULED","sentDate":"Scheduled 2026-07-31","delivered":2537,"openRate":"Target > 38.0%","clickRate":"Target > 2.5%","ctor":"Target > 6.0%","bounces":"< 0.2%","unsubscribes":0,"keyTakeaway":"Pairs DEWA official leak-alert data with anomaly-to-action metrics for asset management teams."},"08_campaign_8_data_path":{"id":8,"title":"Campaign 8: Industrial Data Path Architecture","subject":"The End-to-End Industrial Data Path: From Sensor to Cloud","status":"READY","sentDate":"Industrial Series Send 8","delivered":2537,"openRate":"Target > 35.0%","clickRate":"Target > 2.0%","ctor":"Target > 5.0%","bounces":"< 0.5%","unsubscribes":0,"keyTakeaway":"Technical deep-dive on OT network security, gateway hardware, and IoT infrastructure integration."}};
-    function openHubModal(folder) {
-      const item = metaData[folder];
-      if (!item) return;
-      document.getElementById('modal-title').innerText = item.title;
-      document.getElementById('modal-subject').innerText = '"' + item.subject + '"';
-      document.getElementById('modal-takeaway').innerHTML = '<strong>Brevo Insights & Takeaway:</strong><br/>' + item.keyTakeaway + '<br/><br/><strong>Open Rate:</strong> ' + item.openRate + ' | <strong>CTOR:</strong> ' + item.ctor + ' | <strong>Delivered:</strong> ' + (item.delivered ? item.delivered.toLocaleString() : '2,537');
-      document.getElementById('hub-modal').classList.add('active');
+    const modalData = {
+  "01_campaign_1_original": {
+    "num": 1,
+    "folder": "01_campaign_1_original",
+    "projectName": "cme-brevo-campaign-1",
+    "badgeText": "#1 , #12-#20_brevo",
+    "shortName": "#1 , #12-#20_brevo: Product Intro",
+    "title": "Campaign 1: Product & Services Introduction",
+    "subject": "Connect meters, billing, monitoring and control",
+    "status": "SENT",
+    "tagClass": "tag-sent",
+    "url": "https://cme-brevo-campaign-1.vercel.app",
+    "delivered": "2,411",
+    "openRate": "42.85%",
+    "ctor": "4.55%",
+    "bounces": "11.02%",
+    "unsubscribes": 8,
+    "keyTakeaway": "Initial baseline broadcast. Achieved very high initial curiosity (42.85% open rate)."
+  },
+  "02_campaign_2_newsletter": {
+    "num": 2,
+    "folder": "02_campaign_2_newsletter",
+    "projectName": "cme-brevo-campaign-2",
+    "badgeText": "#2 , #23-#24_brevo",
+    "shortName": "#2 , #23-#24_brevo: Utility Intelligence",
+    "title": "Campaign 2: Live Utility Intelligence",
+    "subject": "Why live utility intelligence is replacing monthly reads",
+    "status": "SENT",
+    "tagClass": "tag-sent",
+    "url": "https://cme-brevo-campaign-2.vercel.app",
+    "delivered": "2,369",
+    "openRate": "37.86%",
+    "ctor": "2.79%",
+    "bounces": "1.21%",
+    "unsubscribes": 3,
+    "keyTakeaway": "Strongest inbox subject line pattern. Direct operational framing reduced hard bounce rates to 1.21%."
+  },
+  "03_campaign_3_report_confidence": {
+    "num": 3,
+    "folder": "03_campaign_3_report_confidence",
+    "projectName": "cme-brevo-campaign-3",
+    "badgeText": "#3 , #26-#27_brevo",
+    "shortName": "#3 , #26-#27_brevo: GCC Industrial AI",
+    "title": "Campaign 3: GCC Industrial AI Execution",
+    "subject": "The GCC's Industrial AI Shift Has Entered the Execution Phase",
+    "status": "SENT",
+    "tagClass": "tag-sent",
+    "url": "https://cme-brevo-campaign-3.vercel.app",
+    "delivered": "2,362",
+    "openRate": "32.26%",
+    "ctor": "5.51%",
+    "bounces": "0.12%",
+    "unsubscribes": 4,
+    "keyTakeaway": "Highest Click-to-Open Rate (5.51%)! Source-backed body copy earned maximum post-open reader engagement."
+  },
+  "07_campaign_7_water_anomaly": {
+    "num": 4,
+    "folder": "07_campaign_7_water_anomaly",
+    "projectName": "cme-brevo-campaign-4",
+    "badgeText": "#4 , #29_brevo",
+    "shortName": "#4 , #29_brevo: Leak Alerts",
+    "title": "Campaign 4: Water Anomaly Leak Alerts",
+    "subject": "The First Leak Signal Should Not Be the Water Bill",
+    "status": "SCHEDULED",
+    "tagClass": "tag-scheduled",
+    "url": "https://cme-brevo-campaign-4.vercel.app",
+    "delivered": "2,537 Target",
+    "openRate": "Target > 38.0%",
+    "ctor": "Target > 6.0%",
+    "bounces": "< 0.2%",
+    "unsubscribes": 0,
+    "keyTakeaway": "Scheduled send focusing on water anomaly detection, sub-metering alerts, and facility risk prevention."
+  },
+  "04_campaign_4_savings_proof": {
+    "num": 5,
+    "folder": "04_campaign_4_savings_proof",
+    "projectName": "cme-brevo-campaign-5",
+    "badgeText": "#5 , #1-#2_brevo",
+    "shortName": "#5 , #1-#2_brevo: Savings Proof",
+    "title": "Campaign 5: Savings Proof & Meter Validation",
+    "subject": "Verifiable Energy & Water Savings Proof for Commercial Assets",
+    "status": "READY",
+    "tagClass": "tag-ready",
+    "url": "https://cme-brevo-campaign-5.vercel.app",
+    "delivered": "2,537 Target",
+    "openRate": "Target > 35.0%",
+    "ctor": "Target > 5.0%",
+    "bounces": "< 0.5%",
+    "unsubscribes": 0,
+    "keyTakeaway": "Focuses on proof of utility savings and meter validation layers for facility operations teams."
+  },
+  "05_campaign_5_meter_backed_savings": {
+    "num": 6,
+    "folder": "05_campaign_5_meter_backed_savings",
+    "projectName": "cme-brevo-campaign-6",
+    "badgeText": "#6 , #4_brevo",
+    "shortName": "#6 , #4_brevo: Meter Savings",
+    "title": "Campaign 6: Meter Backed Savings Briefing",
+    "subject": "How Meter-Backed Data Eliminates Utility Billing Waste",
+    "status": "READY",
+    "tagClass": "tag-ready",
+    "url": "https://cme-brevo-campaign-6.vercel.app",
+    "delivered": "2,537 Target",
+    "openRate": "Target > 35.0%",
+    "ctor": "Target > 5.0%",
+    "bounces": "< 0.5%",
+    "unsubscribes": 0,
+    "keyTakeaway": "Translates raw sub-metering feeds into direct financial savings evidence for CFOs and property managers."
+  },
+  "06_campaign_6_cooling_bill_trail": {
+    "num": 7,
+    "folder": "06_campaign_6_cooling_bill_trail",
+    "projectName": "cme-brevo-campaign-7",
+    "badgeText": "#7 , #5-#7_brevo",
+    "shortName": "#7 , #5-#7_brevo: Cooling Bill Trail",
+    "title": "Campaign 7: Cooling Bill Audit Trail",
+    "subject": "Auditing Chilled Water & Cooling Bill Anomalies Before Invoicing",
+    "status": "READY",
+    "tagClass": "tag-ready",
+    "url": "https://cme-brevo-campaign-7.vercel.app",
+    "delivered": "2,537 Target",
+    "openRate": "Target > 35.0%",
+    "ctor": "Target > 5.0%",
+    "bounces": "< 0.5%",
+    "unsubscribes": 0,
+    "keyTakeaway": "Targets GCC summer cooling surges and chilled water BTU metering accuracy for commercial towers."
+  },
+  "08_campaign_8_data_path": {
+    "num": 8,
+    "folder": "08_campaign_8_data_path",
+    "projectName": "cme-brevo-campaign-8",
+    "badgeText": "#8 , #10_brevo",
+    "shortName": "#8 , #10_brevo: Industrial Data Path",
+    "title": "Campaign 8: Industrial Data Path Architecture",
+    "subject": "The End-to-End Industrial Data Path: From Sensor to Cloud",
+    "status": "READY",
+    "tagClass": "tag-ready",
+    "url": "https://cme-brevo-campaign-8.vercel.app",
+    "delivered": "2,537 Target",
+    "openRate": "Target > 35.0%",
+    "ctor": "Target > 5.0%",
+    "bounces": "< 0.5%",
+    "unsubscribes": 0,
+    "keyTakeaway": "Maps the OT architecture connecting industrial meters directly to executive dashboards."
+  }
+};
+
+    function openHubModal(folderKey) {
+      const data = modalData[folderKey];
+      if (!data) return;
+      
+      const body = document.getElementById('hubModalBody');
+      body.innerHTML = `
+        <h2 style="margin:0 0 6px 0; font-size:22px; color:#fff;">${data.title}</h2>
+        <p style="margin:0 0 20px 0; font-size:13px; color:#94a3b8; font-style:italic;">"${data.subject}"</p>
+        
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:20px;">
+          <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
+            <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">Delivered</div>
+            <div style="font-size:18px; font-weight:700; color:#38bdf8; margin-top:4px;">${data.delivered}</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
+            <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">Open Rate</div>
+            <div style="font-size:18px; font-weight:700; color:#34d399; margin-top:4px;">${data.openRate}</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
+            <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">CTOR</div>
+            <div style="font-size:18px; font-weight:700; color:#a78bfa; margin-top:4px;">${data.ctor}</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
+            <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">Bounces</div>
+            <div style="font-size:18px; font-weight:700; color:#f87171; margin-top:4px;">${data.bounces}</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(99,102,241,0.1); border-left:4px solid #6366f1; padding:16px; border-radius:8px; font-size:13px; line-height:1.6; color:#e0e7ff; margin-bottom:24px;">
+          <strong>💡 Brevo Performance Insight:</strong><br/>
+          ${data.keyTakeaway}
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#64748b;">
+          <span>Badge Tag: ${data.badgeText}</span>
+          <a href="${data.url}" target="_blank" style="color:#38bdf8; text-decoration:none; font-weight:700;">🔗 Standalone Vercel Link</a>
+        </div>
+      `;
+      
+      document.getElementById('hubModal').classList.add('active');
     }
+
     function closeHubModal() {
-      document.getElementById('hub-modal').classList.remove('active');
+      document.getElementById('hubModal').classList.remove('active');
     }
   </script>
-
 </body>
 </html>
