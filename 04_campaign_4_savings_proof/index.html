@@ -459,12 +459,12 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
       Brevo Insights
     </button>
-    <select class="campaign-switcher-select" onchange="if(this.value) window.location.href=this.value">
+    <select class="campaign-switcher-select" onchange="if(this.value){ window.location.assign(this.value); }">
       <option value="">Switch Campaign...</option>
       <option value="https://cme-brevo-campaign-1.vercel.app">Campaign 1: Product Intro</option>
       <option value="https://cme-brevo-campaign-2.vercel.app">Campaign 2: Utility Intelligence</option>
       <option value="https://cme-brevo-campaign-3.vercel.app">Campaign 3: GCC Industrial AI</option>
-      <option value="https://cme-brevo-campaign-4.vercel.app">Campaign 4: Savings Proof</option>
+      <option value="https://cme-brevo-campaign-4.vercel.app" selected>Campaign 4: Savings Proof</option>
       <option value="https://cme-brevo-campaign-5.vercel.app">Campaign 5: Meter Savings</option>
       <option value="https://cme-brevo-campaign-6.vercel.app">Campaign 6: Cooling Bill Trail</option>
       <option value="https://cme-brevo-campaign-7.vercel.app">Campaign 7: Leak Alerts</option>
@@ -517,6 +517,21 @@
     const modal = document.getElementById('cme-analytics-modal');
     modal.classList.toggle('active');
   }
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var selectEl = document.querySelector('.campaign-switcher-select');
+    if (selectEl) {
+      selectEl.addEventListener('change', function(e) {
+        var targetUrl = e.target.value;
+        if (targetUrl) {
+          window.location.assign(targetUrl);
+        }
+      });
+    }
+  });
 </script>
 
 </body>
