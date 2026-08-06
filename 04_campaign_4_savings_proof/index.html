@@ -587,5 +587,83 @@
   }
 </script>
 
+
+<!-- INJECTED CME HUB HEADER -->
+<div id="cme-hub-header">
+  <a href="https://cme-brevo-hub.vercel.app" class="back-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Brevo Email Hub
+  </a>
+
+  <div class="campaign-title-badge">
+    <span>#5: Savings Proof & Meter Validation</span>
+    <span class="status-tag tag-ready">READY</span>
+  </div>
+
+  <div class="header-actions">
+    <button class="btn-analytics-toggle" onclick="toggleAnalyticsModal()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      Brevo Insights
+    </button>
+    <select class="campaign-switcher-select" onchange="if(this.value){ window.location.assign(this.value); }">
+      <option value="">Switch Campaign...</option>
+      <option value="https://cme-brevo-campaign-1.vercel.app">#1 , #12-#20_brevo: Product Intro</option>
+      <option value="https://cme-brevo-campaign-2.vercel.app">#2 , #23-#24_brevo: Utility Intelligence</option>
+      <option value="https://cme-brevo-campaign-3.vercel.app">#3 , #26-#27_brevo: GCC Industrial AI</option>
+      <option value="https://cme-brevo-campaign-4.vercel.app">#4 , #29_brevo: Water Anomaly Leak Alerts</option>
+      <option value="./../04_campaign_4_savings_proof/index.html" selected>#5: Savings Proof & Meter Validation</option>
+      <option value="./../05_campaign_5_meter_backed_savings/index.html">#6: Meter Backed Savings Briefing</option>
+      <option value="./../06_campaign_6_cooling_bill_trail/index.html">#7: Cooling Bill Audit Trail</option>
+      <option value="./../08_campaign_8_data_path/index.html">#8: Industrial Data Path Architecture</option>
+    </select>
+  </div>
+</div>
+
+<!-- ANALYTICS MODAL -->
+<div id="cme-analytics-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="toggleAnalyticsModal()">&times;</button>
+    <h2 style="margin:0 0 6px 0; font-size: 20px; color:#f8fafc;">Campaign 5: Savings Proof & Meter Validation</h2>
+    <p style="margin:0; font-size: 13px; color: #94a3b8;">Subject: <i>"Verifiable Energy & Water Savings Proof for Commercial Assets"</i></p>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Delivered</div>
+        <div class="metric-val" style="color:#38bdf8;">—</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Unique Open Rate</div>
+        <div class="metric-val" style="color:#34d399;">Target > 35.0%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Click-to-Open (CTOR)</div>
+        <div class="metric-val" style="color:#a78bfa;">Target > 5.0%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Hard Bounce Rate</div>
+        <div class="metric-val" style="color:#f87171;">< 0.2%</div>
+      </div>
+    </div>
+
+    <div class="insights-box">
+      <strong>💡 Brevo Performance Insight:</strong><br/>
+      Focuses on measurement & verification (M&V) protocols for GCC energy retrofits.
+    </div>
+
+    <div style="margin-top:20px; font-size:12px; color:#64748b; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <span>Sent Date: Unsent / Ready</span>
+      <span>Unsubscribes: 0</span>
+      <a href="https://cme-brevo-campaign-5.vercel.app" target="_blank" style="color:#38bdf8; text-decoration:none; font-weight:600;">🔗 Standalone Vercel Link</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAnalyticsModal() {
+    const modal = document.getElementById('cme-analytics-modal');
+    modal.classList.toggle('active');
+  }
+</script>
+
 </body>
 </html>
