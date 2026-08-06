@@ -265,9 +265,6 @@
     </tr>
   </table>
 
-
-
-
 <!-- CME BREVO CAMPAIGN HUB FLOATING HEADER & ANALYTICS EMBED -->
 <style>
   #cme-hub-header {
@@ -441,16 +438,74 @@
     line-height: 1.6;
     color: #e0e7ff;
   }
+
+  /* RESPONSIVE DESIGN FOR INJECTED HEADER & ANALYTICS MODAL */
+  @media (max-width: 768px) {
+    #cme-hub-header {
+      padding: 0 12px;
+    }
+    #cme-hub-header .campaign-title-badge span:first-child {
+      display: inline-block;
+      max-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #cme-hub-header {
+      padding: 0 8px;
+    }
+    #cme-hub-header a.back-btn {
+      padding: 5px 8px;
+      font-size: 11px;
+      gap: 4px;
+    }
+    #cme-hub-header .campaign-title-badge {
+      display: none;
+    }
+    #cme-hub-header .header-actions {
+      gap: 6px;
+    }
+    .btn-analytics-toggle {
+      padding: 5px 10px;
+      font-size: 11px;
+    }
+    .campaign-switcher-select {
+      max-width: 120px;
+      font-size: 11px;
+      padding: 4px 6px;
+    }
+    .modal-content {
+      padding: 18px 14px;
+      width: 95%;
+      max-height: 90vh;
+    }
+    .metric-card {
+      padding: 10px 8px;
+    }
+    .metric-val {
+      font-size: 18px;
+    }
+    .metric-label {
+      font-size: 9px;
+    }
+  }
 </style>
 
 <div id="cme-hub-header">
-  <a href="https://cme-brevo-hub.vercel.app" class="back-btn">
+  <a href="../index.html" class="back-btn">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Brevo Email Hub
   </a>
 
   <div class="campaign-title-badge">
-    <span>#5 , #1-#2_brevo: Savings Proof & Meter Validation</span>
+    <span>#5: Savings Proof & Meter Validation</span>
     <span class="status-tag tag-ready">READY</span>
   </div>
 
@@ -465,10 +520,10 @@
       <option value="https://cme-brevo-campaign-2.vercel.app">#2 , #23-#24_brevo: Utility Intelligence</option>
       <option value="https://cme-brevo-campaign-3.vercel.app">#3 , #26-#27_brevo: GCC Industrial AI</option>
       <option value="https://cme-brevo-campaign-4.vercel.app">#4 , #29_brevo: Leak Alerts</option>
-      <option value="https://cme-brevo-campaign-5.vercel.app" selected>#5 , #1-#2_brevo: Savings Proof</option>
-      <option value="https://cme-brevo-campaign-6.vercel.app">#6 , #4_brevo: Meter Savings</option>
-      <option value="https://cme-brevo-campaign-7.vercel.app">#7 , #5-#7_brevo: Cooling Bill Trail</option>
-      <option value="https://cme-brevo-campaign-8.vercel.app">#8 , #10_brevo: Industrial Data Path</option>
+      <option value="https://cme-brevo-campaign-5.vercel.app" selected>#5: Savings Proof</option>
+      <option value="https://cme-brevo-campaign-6.vercel.app">#6: Meter Savings</option>
+      <option value="https://cme-brevo-campaign-7.vercel.app">#7: Cooling Bill Trail</option>
+      <option value="https://cme-brevo-campaign-8.vercel.app">#8: Data Path</option>
     </select>
   </div>
 </div>
@@ -517,10 +572,10 @@
       Focuses on proof of utility savings and meter validation layers for facility operations teams.
     </div>
 
-    <div style="margin-top:20px; font-size:12px; color:#64748b; display:flex; justify-content:space-between; align-items:center;">
+    <div style="margin-top:20px; font-size:12px; color:#64748b; display:flex; justify-content:space-between;">
       <span>Sent Date: Industrial Series Send 4</span>
       <span>Unsubscribes: 0</span>
-      <a href="https://cme-brevo-campaign-4.vercel.app" target="_blank" style="color:#38bdf8; text-decoration:none; font-weight:600;">🔗 Standalone Vercel Link</a>
+      <a href="https://cme-brevo-campaign-4.vercel.app" target="_blank" style="color:#38bdf8; text-decoration:none;">🔗 Standalone Vercel Link</a>
     </div>
   </div>
 </div>
@@ -530,21 +585,6 @@
     const modal = document.getElementById('cme-analytics-modal');
     modal.classList.toggle('active');
   }
-</script>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var selectEl = document.querySelector('.campaign-switcher-select');
-    if (selectEl) {
-      selectEl.addEventListener('change', function(e) {
-        var targetUrl = e.target.value;
-        if (targetUrl) {
-          window.location.assign(targetUrl);
-        }
-      });
-    }
-  });
 </script>
 
 </body>
