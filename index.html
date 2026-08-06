@@ -224,6 +224,68 @@
       color: var(--text-muted); width: 32px; height: 32px;
       border-radius: 50%; cursor: pointer; font-size: 18px;
     }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header { padding: 32px 16px 20px; }
+      h1 { font-size: 28px; }
+      p.subtitle { font-size: 14px; }
+      .stats-summary-bar {
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 10px;
+        padding: 0 16px;
+        margin: 16px auto 28px;
+      }
+      .stat-pill { padding: 14px 10px; border-radius: 12px; }
+      .stat-pill-val { font-size: 20px; }
+      .stat-pill-lbl { font-size: 10px; }
+      .campaign-grid {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+        gap: 18px;
+      }
+      .campaign-card { padding: 18px; border-radius: 16px; }
+      .card-title { font-size: 16px; }
+      .card-subject { font-size: 12px; margin-bottom: 14px; }
+      .card-metrics-row { padding: 10px; gap: 6px; }
+      .c-metric-val { font-size: 13px; }
+      .c-metric-lbl { font-size: 9px; }
+      .btn-primary { padding: 10px; font-size: 13px; }
+      .btn-secondary { padding: 8px; font-size: 11px; }
+      .hub-modal-box {
+        width: 95%;
+        padding: 20px;
+        border-radius: 16px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 24px 12px 16px; }
+      h1 { font-size: 22px; letter-spacing: -0.5px; }
+      p.subtitle { font-size: 13px; }
+      .badge { font-size: 11px; padding: 5px 12px; }
+      .stats-summary-bar {
+        grid-template-columns: 1fr !important;
+        gap: 8px;
+        padding: 0 12px;
+      }
+      .stat-pill { padding: 12px; }
+      .stat-pill-val { font-size: 22px; }
+      .campaign-grid { padding: 0 12px; gap: 14px; }
+      .campaign-card { padding: 16px; border-radius: 14px; }
+      .card-top { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .card-title { font-size: 15px; }
+      .card-metrics-row {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 8px;
+        gap: 4px;
+      }
+      .c-metric-val { font-size: 12px; }
+      .btn-secondary-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .hub-modal-box { width: 96%; padding: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -234,22 +296,18 @@
     <p class="subtitle">Complete visual design catalog, live deliverability analytics, and Vercel multi-deployment links for all ConnectME bulk email campaigns.</p>
   </header>
 
-  <section class="stats-summary-bar">
-    <div class="stat-pill">
-      <div class="stat-pill-lbl">Campaign Series</div>
-      <div class="stat-pill-val">8 Designs</div>
-    </div>
+  <section class="stats-summary-bar" style="grid-template-columns: repeat(3, 1fr);">
     <div class="stat-pill">
       <div class="stat-pill-lbl">Total Emails Sent</div>
-      <div class="stat-pill-val">19,688</div>
+      <div class="stat-pill-val">10,723</div>
     </div>
     <div class="stat-pill">
       <div class="stat-pill-lbl">Avg Open Rate</div>
-      <div class="stat-pill-val" style="color:#34d399;">33.42%</div>
+      <div class="stat-pill-val" style="color:#34d399;">35.50%</div>
     </div>
     <div class="stat-pill">
       <div class="stat-pill-lbl">Click-to-Open (CTOR)</div>
-      <div class="stat-pill-val" style="color:#a78bfa;">5.26%</div>
+      <div class="stat-pill-val" style="color:#a78bfa;">4.25%</div>
     </div>
   </section>
 
@@ -266,15 +324,15 @@
 
           <div class="card-metrics-row">
             <div>
-              <div class="c-metric-val" style="color:#38bdf8;">2,411</div>
+              <div class="c-metric-val" style="color:#38bdf8;">2,442</div>
               <div class="c-metric-lbl">Delivered</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#34d399;">42.85%</div>
+              <div class="c-metric-val" style="color:#34d399;">43.04%</div>
               <div class="c-metric-lbl">Open Rate</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#a78bfa;">4.55%</div>
+              <div class="c-metric-val" style="color:#a78bfa;">4.66%</div>
               <div class="c-metric-lbl">CTOR</div>
             </div>
           </div>
@@ -312,11 +370,11 @@
               <div class="c-metric-lbl">Delivered</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#34d399;">37.86%</div>
+              <div class="c-metric-val" style="color:#34d399;">37.91%</div>
               <div class="c-metric-lbl">Open Rate</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#a78bfa;">2.79%</div>
+              <div class="c-metric-val" style="color:#a78bfa;">2.78%</div>
               <div class="c-metric-lbl">CTOR</div>
             </div>
           </div>
@@ -354,11 +412,11 @@
               <div class="c-metric-lbl">Delivered</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#34d399;">32.26%</div>
+              <div class="c-metric-val" style="color:#34d399;">32.39%</div>
               <div class="c-metric-lbl">Open Rate</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#a78bfa;">5.51%</div>
+              <div class="c-metric-val" style="color:#a78bfa;">5.49%</div>
               <div class="c-metric-lbl">CTOR</div>
             </div>
           </div>
@@ -392,15 +450,15 @@
 
           <div class="card-metrics-row">
             <div>
-              <div class="c-metric-val" style="color:#64748b;">2,310</div>
+              <div class="c-metric-val" style="color:#38bdf8;">2,327</div>
               <div class="c-metric-lbl">Delivered</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#64748b;">32.34%</div>
+              <div class="c-metric-val" style="color:#34d399;">28.66%</div>
               <div class="c-metric-lbl">Open Rate</div>
             </div>
             <div>
-              <div class="c-metric-val" style="color:#64748b;">20.13%</div>
+              <div class="c-metric-val" style="color:#a78bfa;">4.05%</div>
               <div class="c-metric-lbl">CTOR</div>
             </div>
           </div>
@@ -612,12 +670,12 @@
     "status": "SENT",
     "tagClass": "tag-sent",
     "url": "https://cme-brevo-campaign-1.vercel.app",
-    "delivered": "2,411",
-    "openRate": "42.85%",
-    "ctor": "4.55%",
-    "bounces": "11.02%",
-    "unsubscribes": 8,
-    "keyTakeaway": "Initial baseline broadcast. Achieved very high initial curiosity (42.85% open rate)."
+    "delivered": "2,442",
+    "openRate": "43.04%",
+    "ctor": "4.66%",
+    "bounces": "12.32%",
+    "unsubscribes": 5,
+    "keyTakeaway": "Initial baseline broadcast. Achieved very high initial curiosity (43.04% open rate)."
   },
   "02_campaign_2_newsletter": {
     "num": 2,
@@ -631,8 +689,8 @@
     "tagClass": "tag-sent",
     "url": "https://cme-brevo-campaign-2.vercel.app",
     "delivered": "2,369",
-    "openRate": "37.86%",
-    "ctor": "2.79%",
+    "openRate": "37.91%",
+    "ctor": "2.78%",
     "bounces": "1.21%",
     "unsubscribes": 3,
     "keyTakeaway": "Strongest inbox subject line pattern. Direct operational framing reduced hard bounce rates to 1.21%."
@@ -649,11 +707,11 @@
     "tagClass": "tag-sent",
     "url": "https://cme-brevo-campaign-3.vercel.app",
     "delivered": "2,362",
-    "openRate": "32.26%",
-    "ctor": "5.51%",
-    "bounces": "0.12%",
+    "openRate": "32.39%",
+    "ctor": "5.49%",
+    "bounces": "0.13%",
     "unsubscribes": 4,
-    "keyTakeaway": "Highest Click-to-Open Rate (5.51%)! Source-backed body copy earned maximum post-open reader engagement."
+    "keyTakeaway": "Highest Click-to-Open Rate (5.49%)! Source-backed body copy earned maximum post-open reader engagement."
   },
   "07_campaign_7_water_anomaly": {
     "num": 4,
@@ -666,10 +724,10 @@
     "status": "SENT",
     "tagClass": "tag-sent",
     "url": "https://cme-brevo-campaign-4.vercel.app",
-    "delivered": "2,310",
-    "openRate": "32.34%",
-    "ctor": "20.13%",
-    "bounces": "9.06%",
+    "delivered": "2,327",
+    "openRate": "28.66%",
+    "ctor": "4.05%",
+    "bounces": "0.47%",
     "unsubscribes": 4,
     "keyTakeaway": "Pairs DEWA official leak-alert data with anomaly-to-action metrics for asset management teams."
   },
@@ -684,10 +742,10 @@
     "status": "READY",
     "tagClass": "tag-ready",
     "url": "https://cme-brevo-campaign-5.vercel.app",
-    "delivered": "—",
-    "openRate": "—",
-    "ctor": "—",
-    "bounces": "—",
+    "delivered": "-",
+    "openRate": "-",
+    "ctor": "-",
+    "bounces": "-",
     "unsubscribes": 0,
     "keyTakeaway": "Focuses on proof of utility savings and meter validation layers for facility operations teams."
   },
@@ -702,10 +760,10 @@
     "status": "READY",
     "tagClass": "tag-ready",
     "url": "https://cme-brevo-campaign-6.vercel.app",
-    "delivered": "—",
-    "openRate": "—",
-    "ctor": "—",
-    "bounces": "—",
+    "delivered": "-",
+    "openRate": "-",
+    "ctor": "-",
+    "bounces": "-",
     "unsubscribes": 0,
     "keyTakeaway": "Translates raw sub-metering feeds into direct financial savings evidence for CFOs and property managers."
   },
@@ -720,10 +778,10 @@
     "status": "READY",
     "tagClass": "tag-ready",
     "url": "https://cme-brevo-campaign-7.vercel.app",
-    "delivered": "—",
-    "openRate": "—",
-    "ctor": "—",
-    "bounces": "—",
+    "delivered": "-",
+    "openRate": "-",
+    "ctor": "-",
+    "bounces": "-",
     "unsubscribes": 0,
     "keyTakeaway": "Targets GCC summer cooling surges and chilled water BTU metering accuracy for commercial towers."
   },
@@ -738,10 +796,10 @@
     "status": "READY",
     "tagClass": "tag-ready",
     "url": "https://cme-brevo-campaign-8.vercel.app",
-    "delivered": "—",
-    "openRate": "—",
-    "ctor": "—",
-    "bounces": "—",
+    "delivered": "-",
+    "openRate": "-",
+    "ctor": "-",
+    "bounces": "-",
     "unsubscribes": 0,
     "keyTakeaway": "Maps the OT architecture connecting industrial meters directly to executive dashboards."
   }
@@ -759,19 +817,19 @@
         <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:20px;">
           <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
             <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">Delivered</div>
-            <div style="font-size:18px; font-weight:700; color:${data.num <= 3 ? '#38bdf8' : '#64748b'}; margin-top:4px;">${data.delivered}</div>
+            <div style="font-size:18px; font-weight:700; color:${data.num <= 4 ? '#38bdf8' : '#64748b'}; margin-top:4px;">${data.delivered}</div>
           </div>
           <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
             <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">Open Rate</div>
-            <div style="font-size:18px; font-weight:700; color:${data.num <= 3 ? '#34d399' : '#64748b'}; margin-top:4px;">${data.openRate}</div>
+            <div style="font-size:18px; font-weight:700; color:${data.num <= 4 ? '#34d399' : '#64748b'}; margin-top:4px;">${data.openRate}</div>
           </div>
           <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
             <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">CTOR</div>
-            <div style="font-size:18px; font-weight:700; color:${data.num <= 3 ? '#a78bfa' : '#64748b'}; margin-top:4px;">${data.ctor}</div>
+            <div style="font-size:18px; font-weight:700; color:${data.num <= 4 ? '#a78bfa' : '#64748b'}; margin-top:4px;">${data.ctor}</div>
           </div>
           <div style="background:rgba(255,255,255,0.04); padding:16px; border-radius:12px; text-align:center;">
             <div style="font-size:10px; color:#94a3b8; text-transform:uppercase;">Bounces</div>
-            <div style="font-size:18px; font-weight:700; color:${data.num <= 3 ? '#f87171' : '#64748b'}; margin-top:4px;">${data.bounces}</div>
+            <div style="font-size:18px; font-weight:700; color:${data.num <= 4 ? '#f87171' : '#64748b'}; margin-top:4px;">${data.bounces}</div>
           </div>
         </div>
 
