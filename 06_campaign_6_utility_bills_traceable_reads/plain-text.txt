@@ -1,0 +1,42 @@
+UTILITY BILLS NEED TRACEABLE READS
+
+In multi-tenant assets, billing confidence is built before the invoice leaves the system. If a tenant challenges a charge, can your team replay the path from reading to allocation?
+
+Read -> Validate -> Allocate -> Invoice -> Answer
+
+THE SHARED LEDGER
+One record. Four teams.
+
+Operations: Continuous read?
+Finance: Right rule, rate and period?
+Property team: Right tenant and unit?
+Tenant support: Evidence ready?
+
+EXCEPTION QUEUE
+Catch exceptions before tenants do.
+
+Missing read: Meter path failed.
+Abnormal use: Spike needs review.
+Account mismatch: Map unit to tenant.
+
+INVOICE CHECK
+If the invoice cannot be rebuilt quickly, dispute risk is already inside the process.
+
+Make the read, rule and allocation visible early.
+
+Sources:
+https://dubailand.gov.ae/en/eservices/service-charge-index-overview/
+https://www.dewa.gov.ae/en/consumer/consumption-management/consumption-verification-electricity-water
+https://rsbdubai.gov.ae/media/0ena3rxj/rd06-metering-and-billing-v11.pdf
+
+ABOUT CONNECTME
+ConnectME links AMR, MDMS, meter data validation, tenant allocation and utility billing workflows so portfolio teams can trace charges before disputes begin.
+
+Continue the conversation:
+https://calendly.com/connectme_solutions/30min
+
+ConnectME Manufacturing LLC
+Dubai, UAE
+sales@connectme.biz | +971 4 234 8480 | https://connectme.biz/
+
+Unsubscribe: {{ unsubscribe }}

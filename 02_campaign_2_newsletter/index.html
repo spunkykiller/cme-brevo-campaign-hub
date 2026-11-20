@@ -532,628 +532,646 @@
     </tr>
   </table>
 
-<!-- CME BREVO CAMPAIGN HUB FLOATING HEADER & ANALYTICS EMBED -->
+<!-- CME HUB REVIEW CHROME -->
 <style>
-  #cme-hub-header {
+  #cme-preview-header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 56px;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    right: 0;
+    height: 58px;
+    z-index: 999999;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    gap: 12px;
+    padding: 0 16px;
+    background: #071f2c;
+    border-bottom: 3px solid #24aeda;
+    color: #f4fbfd;
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     box-sizing: border-box;
-    z-index: 999999;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   }
-  #cme-hub-header a.back-btn {
+  #cme-preview-header a,
+  #cme-preview-header button,
+  #cme-preview-header select {
+    font-family: inherit;
+  }
+  #cme-preview-header .cme-back,
+  #cme-preview-header .cme-notes {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    border-radius: 6px;
+    border: 1px solid rgba(128, 215, 243, 0.38);
+    background: rgba(128, 215, 243, 0.12);
+    color: #c9f0fb;
+    padding: 7px 10px;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  #cme-preview-header .cme-title {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  #cme-preview-header .cme-title span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #cme-preview-header .cme-status {
+    border-radius: 999px;
+    padding: 4px 8px;
+    background: #e9f7f2;
+    color: #127c63;
+    font-size: 10px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  #cme-preview-header .cme-actions {
+    display: flex;
     align-items: center;
     gap: 8px;
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    background: rgba(56, 189, 248, 0.12);
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    transition: all 0.2s ease;
   }
-  #cme-hub-header a.back-btn:hover {
-    background: rgba(56, 189, 248, 0.25);
-    transform: translateY(-1px);
-  }
-  #cme-hub-header .campaign-title-badge {
-    font-size: 14px;
-    font-weight: 600;
-    color: #f8fafc;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  #cme-hub-header .status-tag {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .tag-sent { background: #059669; color: #ecfdf5; }
-  .tag-ready { background: #0284c7; color: #f0f9ff; }
-  .tag-scheduled { background: #d97706; color: #fffbeb; }
-
-  #cme-hub-header .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .btn-analytics-toggle {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: #ffffff;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
+  #cme-preview-header .cme-theme-toggle {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
-    transition: all 0.2s ease;
+    gap: 3px;
+    padding: 3px;
+    border: 1px solid #31515d;
+    border-radius: 7px;
+    background: #102f3c;
   }
-  .btn-analytics-toggle:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
-  }
-  .campaign-switcher-select {
-    background: #1e293b;
-    color: #e2e8f0;
-    border: 1px solid #475569;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 500;
-    outline: none;
-    cursor: pointer;
-  }
-
-  body {
-    padding-top: 56px !important;
-  }
-
-  /* MODAL STYLING */
-  #cme-analytics-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 9999999;
-    align-items: center;
-    justify-content: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  }
-  #cme-analytics-modal.active { display: flex; }
-  .modal-content {
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 720px;
-    max-height: 88vh;
-    overflow-y: auto;
-    padding: 28px;
-    color: #f8fafc;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    position: relative;
-  }
-  .modal-close {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: #1e293b;
-    color: #94a3b8;
-    border: none;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .modal-close:hover { color: #fff; background: #334155; }
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin: 20px 0;
-  }
-  .metric-card {
-    background: #1e293b;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    text-align: center;
-  }
-  .metric-val {
-    font-size: 22px;
-    font-weight: 700;
-    color: #38bdf8;
-    margin-top: 4px;
-  }
-  .metric-label {
+  #cme-preview-header .cme-theme-button {
+    min-height: 28px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #c9f0fb;
+    padding: 5px 8px;
     font-size: 11px;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .insights-box {
-    background: rgba(99, 102, 241, 0.1);
-    border-left: 4px solid #6366f1;
-    padding: 14px 18px;
-    border-radius: 8px;
-    margin-top: 16px;
-    font-size: 13px;
-    line-height: 1.6;
-    color: #e0e7ff;
-  }
-
-  /* RESPONSIVE DESIGN FOR INJECTED HEADER & ANALYTICS MODAL */
-  @media (max-width: 768px) {
-    #cme-hub-header {
-      padding: 0 12px;
-    }
-    #cme-hub-header .campaign-title-badge span:first-child {
-      display: inline-block;
-      max-width: 140px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .metrics-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    #cme-hub-header {
-      padding: 0 8px;
-    }
-    #cme-hub-header a.back-btn {
-      padding: 5px 8px;
-      font-size: 11px;
-      gap: 4px;
-    }
-    #cme-hub-header .campaign-title-badge {
-      display: none;
-    }
-    #cme-hub-header .header-actions {
-      gap: 6px;
-    }
-    .btn-analytics-toggle {
-      padding: 5px 10px;
-      font-size: 11px;
-    }
-    .campaign-switcher-select {
-      max-width: 120px;
-      font-size: 11px;
-      padding: 4px 6px;
-    }
-    .modal-content {
-      padding: 18px 14px;
-      width: 95%;
-      max-height: 90vh;
-    }
-    .metric-card {
-      padding: 10px 8px;
-    }
-    .metric-val {
-      font-size: 18px;
-    }
-    .metric-label {
-      font-size: 9px;
-    }
-  }
-</style>
-
-<div id="cme-hub-header">
-  <a href="../index.html" class="back-btn">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Brevo Email Hub
-  </a>
-
-  <div class="campaign-title-badge">
-    <span>#2 , #23-#24_brevo: Live Utility Intelligence</span>
-    <span class="status-tag tag-sent">SENT</span>
-  </div>
-
-  <div class="header-actions">
-    <button class="btn-analytics-toggle" onclick="toggleAnalyticsModal()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-      Brevo Insights
-    </button>
-    <select class="campaign-switcher-select" onchange="if(this.value){ window.location.assign(this.value); }">
-      <option value="">Switch Campaign...</option>
-      <option value="https://cme-brevo-campaign-1.vercel.app">#1 , #12-#20_brevo: Product Intro</option>
-      <option value="https://cme-brevo-campaign-2.vercel.app" selected>#2 , #23-#24_brevo: Utility Intelligence</option>
-      <option value="https://cme-brevo-campaign-3.vercel.app">#3 , #26-#27_brevo: GCC Industrial AI</option>
-      <option value="https://cme-brevo-campaign-4.vercel.app">#4 , #29_brevo: Leak Alerts</option>
-      <option value="https://cme-brevo-campaign-5.vercel.app">#5: Savings Proof</option>
-      <option value="https://cme-brevo-campaign-6.vercel.app">#6: Meter Savings</option>
-      <option value="https://cme-brevo-campaign-7.vercel.app">#7: Cooling Bill Trail</option>
-      <option value="https://cme-brevo-campaign-8.vercel.app">#8: Data Path</option>
-    </select>
-  </div>
-</div>
-
-<!-- ANALYTICS MODAL -->
-<div id="cme-analytics-modal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="toggleAnalyticsModal()">&times;</button>
-    <h2 style="margin:0 0 6px 0; font-size: 20px; color:#f8fafc;">Campaign 2: Live Utility Intelligence</h2>
-    <p style="margin:0; font-size: 13px; color: #94a3b8;">Subject: <i>"Why live utility intelligence is replacing monthly reads"</i></p>
-
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-label">Delivered</div>
-        <div class="metric-val" style="color:#38bdf8;">2,369</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Unique Open Rate</div>
-        <div class="metric-val" style="color:#34d399;">37.86%</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Click-to-Open (CTOR)</div>
-        <div class="metric-val" style="color:#a78bfa;">2.79%</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Hard Bounce Rate</div>
-        <div class="metric-val" style="color:#f87171;">1.21%</div>
-      </div>
-    </div>
-
-    <div class="insights-box">
-      <strong>💡 Brevo Performance Insight:</strong><br/>
-      Strongest inbox subject line pattern. Direct operational framing reduced hard bounce rates to 1.21%.
-    </div>
-
-    <div style="margin-top:20px; font-size:12px; color:#64748b; display:flex; justify-content:space-between;">
-      <span>Sent Date: 2026-07-01</span>
-      <span>Unsubscribes: 3</span>
-      <a href="https://cme-brevo-campaign-2.vercel.app" target="_blank" style="color:#38bdf8; text-decoration:none;">🔗 Standalone Vercel Link</a>
-    </div>
-  </div>
-</div>
-
-<script>
-  function toggleAnalyticsModal() {
-    const modal = document.getElementById('cme-analytics-modal');
-    modal.classList.toggle('active');
-  }
-</script>
-
-
-
-<!-- INJECTED CME HUB HEADER & RESPONSIVE SUITE -->
-<style>
-  /* UNIVERSAL MOBILE OPTIMIZATIONS */
-  html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-  }
-  img {
-    max-width: 100% !important;
-  }
-  #cme-hub-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 56px;
-    background: #0f172a;
-    border-bottom: 1px solid #334155;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    z-index: 999999;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
-  #cme-hub-header a.back-btn {
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    background: rgba(56, 189, 248, 0.12);
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-  }
-  #cme-hub-header a.back-btn:hover {
-    background: rgba(56, 189, 248, 0.25);
-  }
-  #cme-hub-header .campaign-title-badge {
-    font-size: 13px;
-    font-weight: 600;
-    color: #f8fafc;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-  }
-  #cme-hub-header .status-tag {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .tag-sent { background: #059669; color: #ecfdf5; }
-  .tag-ready { background: #0284c7; color: #f0f9ff; }
-  .tag-scheduled { background: #d97706; color: #fffbeb; }
-
-  #cme-hub-header .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-analytics-toggle {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: #ffffff;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
+    line-height: 1;
+    font-weight: 800;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
     white-space: nowrap;
-    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
-    transition: all 0.2s ease;
   }
-  .btn-analytics-toggle:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.5);
+  #cme-preview-header .cme-theme-button.cme-active {
+    background: #24aeda;
+    color: #06202d;
   }
-  .campaign-switcher-select {
-    background: #1e293b;
-    color: #e2e8f0;
-    border: 1px solid #475569;
-    padding: 6px 10px;
-    border-radius: 8px;
+  #cme-preview-header select {
+    max-width: 240px;
+    height: 34px;
+    border-radius: 6px;
+    border: 1px solid #31515d;
+    background: #102f3c;
+    color: #f4fbfd;
+    padding: 0 8px;
     font-size: 12px;
-    font-weight: 500;
-    outline: none;
-    cursor: pointer;
-    max-width: 180px;
-    text-overflow: ellipsis;
+    font-weight: 700;
   }
-
-  body {
-    padding-top: 56px !important;
+  body { padding-top: 58px !important; }
+  body.cme-theme-light {
+    background: #edf4f6 !important;
+    color: #12283b !important;
+    color-scheme: light !important;
   }
-
-  /* MODAL STYLING */
-  #cme-analytics-modal {
-    display: none;
+  body.cme-theme-light .email-bg,
+  body.cme-theme-light .body {
+    background: #edf4f6 !important;
+    color: #12283b !important;
+    background-image: linear-gradient(#edf4f6, #edf4f6) !important;
+  }
+  body.cme-theme-light .email-container,
+  body.cme-theme-light .container,
+  body.cme-theme-light .surface,
+  body.cme-theme-light .force-light,
+  body.cme-theme-light .email-container td[bgcolor="#ffffff"] {
+    background: #ffffff !important;
+    color: #12283b !important;
+    border-color: #c9dae5 !important;
+    background-image: linear-gradient(#ffffff, #ffffff) !important;
+  }
+  body.cme-theme-light .surface-soft,
+  body.cme-theme-light .force-soft,
+  body.cme-theme-light .email-container td[bgcolor="#f3f8fa"],
+  body.cme-theme-light .email-container td[bgcolor="#f4f7f9"],
+  body.cme-theme-light .email-container td[bgcolor="#f5f9fb"],
+  body.cme-theme-light .email-container td[bgcolor="#f6fbfd"],
+  body.cme-theme-light .email-container td[bgcolor="#f7fbfd"] {
+    background: #f5f9fb !important;
+    color: #12283b !important;
+    background-image: linear-gradient(#f5f9fb, #f5f9fb) !important;
+  }
+  body.cme-theme-light .panel,
+  body.cme-theme-light .force-panel {
+    background: #f7fbfd !important;
+    color: #12283b !important;
+    border-color: #dce7eb !important;
+    background-image: linear-gradient(#f7fbfd, #f7fbfd) !important;
+  }
+  body.cme-theme-light .email-container table.matrix-table {
+    background: #ffffff !important;
+    color: #12283b !important;
+    border-color: #dce4e8 !important;
+    background-image: linear-gradient(#ffffff, #ffffff) !important;
+  }
+  body.cme-theme-light .email-container td.matrix-copy {
+    background: #ffffff !important;
+    color: #5d717c !important;
+    border-color: #dce4e8 !important;
+    background-image: linear-gradient(#ffffff, #ffffff) !important;
+  }
+  body.cme-theme-light .email-container td.matrix-mbus {
+    background: #e8f5fa !important;
+    color: #147fa4 !important;
+    border-left: 0 !important;
+    background-image: linear-gradient(#e8f5fa, #e8f5fa) !important;
+  }
+  body.cme-theme-light .email-container td.matrix-modbus {
+    background: #eaf6f1 !important;
+    color: #26775c !important;
+    border-left: 0 !important;
+    background-image: linear-gradient(#eaf6f1, #eaf6f1) !important;
+  }
+  body.cme-theme-light .email-container td.matrix-bacnet {
+    background: #f3edf9 !important;
+    color: #7553a6 !important;
+    border-left: 0 !important;
+    background-image: linear-gradient(#f3edf9, #f3edf9) !important;
+  }
+  body.cme-theme-light .email-container td.matrix-lorawan {
+    background: #faedf6 !important;
+    color: #a64b8f !important;
+    border-left: 0 !important;
+    background-image: linear-gradient(#faedf6, #faedf6) !important;
+  }
+  body.cme-theme-light .email-container table.trace-card,
+  body.cme-theme-light .email-container table.exception-card,
+  body.cme-theme-light .email-container table.ledger-table {
+    background: #ffffff !important;
+    color: #12283b !important;
+    border-color: #d9e5ea !important;
+    background-image: linear-gradient(#ffffff, #ffffff) !important;
+  }
+  body.cme-theme-light .email-container table.trace-card {
+    border-top-color: #e5a72f !important;
+  }
+  body.cme-theme-light .email-container table.exception-card {
+    border-left-color: #e5a72f !important;
+  }
+  body.cme-theme-light .email-container .trace-number,
+  body.cme-theme-light .email-container td.ledger-index {
+    color: #a56d08 !important;
+  }
+  body.cme-theme-light .email-container td.ledger-index {
+    background: #fbf4e8 !important;
+    border-color: #dce5e7 !important;
+    background-image: linear-gradient(#fbf4e8, #fbf4e8) !important;
+  }
+  body.cme-theme-light .email-container td.ledger-role,
+  body.cme-theme-light .email-container td.ledger-copy {
+    background: #ffffff !important;
+    color: #5d717c !important;
+    border-color: #dce5e7 !important;
+    background-image: linear-gradient(#ffffff, #ffffff) !important;
+  }
+  body.cme-theme-light .email-container table.premium-callout {
+    background: #fff4ed !important;
+    color: #0a2635 !important;
+    border-color: #e07158 !important;
+    background-image: linear-gradient(#fff4ed, #fff4ed) !important;
+  }
+  body.cme-theme-light .accent-panel {
+    background: #e7f7fb !important;
+    color: #0a2635 !important;
+    border-color: #28addb !important;
+    background-image: linear-gradient(#e7f7fb, #e7f7fb) !important;
+  }
+  body.cme-theme-light .question-panel {
+    background: #fff6f2 !important;
+    color: #2a3536 !important;
+    border-color: #e07158 !important;
+    background-image: linear-gradient(#fff6f2, #fff6f2) !important;
+  }
+  body.cme-theme-light .move-panel {
+    background: #f2effc !important;
+    color: #23323b !important;
+    border-color: #8a72dc !important;
+    background-image: linear-gradient(#f2effc, #f2effc) !important;
+  }
+  body.cme-theme-light .email-container p,
+  body.cme-theme-light .email-container span,
+  body.cme-theme-light .email-container td,
+  body.cme-theme-light .text-body {
+    color: #536b76 !important;
+  }
+  body.cme-theme-light .email-container h1,
+  body.cme-theme-light .email-container h2,
+  body.cme-theme-light .email-container h3,
+  body.cme-theme-light .email-container strong,
+  body.cme-theme-light .text-strong {
+    color: #102a39 !important;
+  }
+  body.cme-theme-light .text-muted {
+    color: #71858e !important;
+  }
+  body.cme-theme-light .footer-link,
+  body.cme-theme-light .read-more-link {
+    color: #126f91 !important;
+  }
+  body.cme-theme-light .brand-panel,
+  body.cme-theme-light .brand-secondary,
+  body.cme-theme-light .brand-secondary td,
+  body.cme-theme-light .email-container td[bgcolor="#0A192F"],
+  body.cme-theme-light .email-container td[bgcolor="#071f2c"],
+  body.cme-theme-light .email-container td[bgcolor="#153336"],
+  body.cme-theme-light .email-container td[bgcolor="#101f2b"] {
+    background: #0A192F !important;
+    color: #e8f4f8 !important;
+    border-color: #ffffff !important;
+    background-image: linear-gradient(#0A192F, #0A192F) !important;
+  }
+  body.cme-theme-light .brand-panel p,
+  body.cme-theme-light .brand-panel h2,
+  body.cme-theme-light .brand-panel h3,
+  body.cme-theme-light .brand-panel span,
+  body.cme-theme-light .brand-panel strong,
+  body.cme-theme-light .brand-panel td,
+  body.cme-theme-light .brand-secondary a,
+  body.cme-theme-light .email-container td[bgcolor="#0A192F"] p,
+  body.cme-theme-light .email-container td[bgcolor="#0A192F"] span,
+  body.cme-theme-light .email-container td[bgcolor="#0A192F"] strong,
+  body.cme-theme-light .email-container td[bgcolor="#0A192F"] a,
+  body.cme-theme-light .email-container td[bgcolor="#071f2c"] p,
+  body.cme-theme-light .email-container td[bgcolor="#071f2c"] span,
+  body.cme-theme-light .email-container td[bgcolor="#071f2c"] strong,
+  body.cme-theme-light .email-container td[bgcolor="#071f2c"] a,
+  body.cme-theme-light .email-container td[bgcolor="#153336"] p,
+  body.cme-theme-light .email-container td[bgcolor="#153336"] span,
+  body.cme-theme-light .email-container td[bgcolor="#153336"] strong,
+  body.cme-theme-light .email-container td[bgcolor="#153336"] a,
+  body.cme-theme-light .email-container td[bgcolor="#101f2b"] p,
+  body.cme-theme-light .email-container td[bgcolor="#101f2b"] span,
+  body.cme-theme-light .email-container td[bgcolor="#101f2b"] strong,
+  body.cme-theme-light .email-container td[bgcolor="#101f2b"] a {
+    color: #e8f4f8 !important;
+  }
+  body.cme-theme-light .accent-panel p:first-child { color: #1185af !important; }
+  body.cme-theme-light .question-panel p:first-child { color: #c45e46 !important; }
+  body.cme-theme-light .move-panel p:first-child { color: #6f58c4 !important; }
+  body.cme-theme-light .accent-panel p:last-child { color: #0a2635 !important; }
+  body.cme-theme-light .question-panel p:last-child { color: #2a3536 !important; }
+  body.cme-theme-light .move-panel p:last-child { color: #23323b !important; }
+  body.cme-theme-dark {
+    background: #07131a !important;
+    color: #d9e7ec !important;
+    color-scheme: dark !important;
+  }
+  body.cme-theme-dark .email-bg,
+  body.cme-theme-dark .body {
+    background: #07131a !important;
+    color: #d9e7ec !important;
+    background-image: linear-gradient(#07131a, #07131a) !important;
+  }
+  body.cme-theme-dark .email-container,
+  body.cme-theme-dark .container,
+  body.cme-theme-dark .surface,
+  body.cme-theme-dark .email-container td[bgcolor="#ffffff"] {
+    background: #10222c !important;
+    color: #d9e7ec !important;
+    border-color: #324a55 !important;
+    background-image: linear-gradient(#10222c, #10222c) !important;
+  }
+  body.cme-theme-dark .surface-soft,
+  body.cme-theme-dark .email-container td[bgcolor="#f3f8fa"],
+  body.cme-theme-dark .email-container td[bgcolor="#f4f7f6"],
+  body.cme-theme-dark .email-container td[bgcolor="#f4f7f9"],
+  body.cme-theme-dark .email-container td[bgcolor="#f5f9fb"],
+  body.cme-theme-dark .email-container td[bgcolor="#f6fbfd"],
+  body.cme-theme-dark .email-container td[bgcolor="#f7fbfd"] {
+    background: #0c1b23 !important;
+    color: #d9e7ec !important;
+    background-image: linear-gradient(#0c1b23, #0c1b23) !important;
+  }
+  body.cme-theme-dark .panel {
+    background: #182731 !important;
+    color: #d9e7ec !important;
+    border-color: #394d59 !important;
+    background-image: linear-gradient(#182731, #182731) !important;
+  }
+  body.cme-theme-dark .email-container table.matrix-table {
+    background: #132530 !important;
+    color: #d9e7ec !important;
+    border-color: #465c68 !important;
+    background-image: linear-gradient(#132530, #132530) !important;
+  }
+  body.cme-theme-dark .email-container td.matrix-label {
+    background: #1c3240 !important;
+    color: #d9f2fb !important;
+    border-color: #465c68 !important;
+    background-image: linear-gradient(#1c3240, #1c3240) !important;
+  }
+  body.cme-theme-dark .email-container td.matrix-copy {
+    background: #142631 !important;
+    color: #f2f8fb !important;
+    border-color: #465c68 !important;
+    background-image: linear-gradient(#142631, #142631) !important;
+  }
+  body.cme-theme-dark .email-container td.matrix-mbus {
+    border-left: 4px solid #33b8e3 !important;
+  }
+  body.cme-theme-dark .email-container td.matrix-modbus {
+    border-left: 4px solid #36b787 !important;
+  }
+  body.cme-theme-dark .email-container td.matrix-bacnet {
+    border-left: 4px solid #a995ee !important;
+  }
+  body.cme-theme-dark .email-container td.matrix-lorawan {
+    border-left: 4px solid #d478bd !important;
+  }
+  body.cme-theme-dark .email-container table.trace-card,
+  body.cme-theme-dark .email-container table.exception-card,
+  body.cme-theme-dark .email-container table.ledger-table {
+    background: #142b36 !important;
+    color: #d9e7ec !important;
+    border-color: #35505c !important;
+    background-image: linear-gradient(#142b36, #142b36) !important;
+  }
+  body.cme-theme-dark .email-container table.trace-card {
+    border-top-color: #e5a72f !important;
+  }
+  body.cme-theme-dark .email-container table.exception-card {
+    border-left-color: #e5a72f !important;
+  }
+  body.cme-theme-dark .email-container .trace-number,
+  body.cme-theme-dark .email-container td.ledger-index {
+    color: #e5a72f !important;
+  }
+  body.cme-theme-dark .email-container td.ledger-index {
+    background: #1c3340 !important;
+    border-color: #35505c !important;
+    background-image: linear-gradient(#1c3340, #1c3340) !important;
+  }
+  body.cme-theme-dark .email-container td.ledger-role,
+  body.cme-theme-dark .email-container td.ledger-copy {
+    background: #142b36 !important;
+    color: #c8d6dc !important;
+    border-color: #35505c !important;
+    background-image: linear-gradient(#142b36, #142b36) !important;
+  }
+  body.cme-theme-dark .email-container table.premium-callout {
+    background: #1b2d34 !important;
+    color: #eef8fb !important;
+    border-color: #e07158 !important;
+    background-image: linear-gradient(#1b2d34, #1b2d34) !important;
+  }
+  body.cme-theme-dark .accent-panel,
+  body.cme-theme-dark .question-panel,
+  body.cme-theme-dark .move-panel {
+    background: #172b35 !important;
+    color: #eef8fb !important;
+    border-color: #24aeda !important;
+    background-image: linear-gradient(#172b35, #172b35) !important;
+  }
+  body.cme-theme-dark .email-container p,
+  body.cme-theme-dark .email-container span,
+  body.cme-theme-dark .email-container td,
+  body.cme-theme-dark .text-body {
+    color: #cad9de !important;
+  }
+  body.cme-theme-dark .email-container h1,
+  body.cme-theme-dark .email-container h2,
+  body.cme-theme-dark .email-container h3,
+  body.cme-theme-dark .email-container strong,
+  body.cme-theme-dark .text-strong {
+    color: #f4f8fa !important;
+  }
+  body.cme-theme-dark .text-muted {
+    color: #9fb4bd !important;
+  }
+  body.cme-theme-dark .footer-link,
+  body.cme-theme-dark .read-more-link {
+    color: #83d8f4 !important;
+  }
+  body.cme-theme-dark .email-container td[bgcolor="#0A192F"],
+  body.cme-theme-dark .email-container td[bgcolor="#071f2c"],
+  body.cme-theme-dark .email-container td[bgcolor="#153336"],
+  body.cme-theme-dark .email-container td[bgcolor="#101f2b"] {
+    background: #071f2c !important;
+    color: #e8f4f8 !important;
+    border-color: #314b57 !important;
+    background-image: linear-gradient(#071f2c, #071f2c) !important;
+  }
+  body.cme-theme-dark .accent-panel p,
+  body.cme-theme-dark .question-panel p,
+  body.cme-theme-dark .move-panel p,
+  body.cme-theme-dark .email-container td[bgcolor="#0A192F"] p,
+  body.cme-theme-dark .email-container td[bgcolor="#0A192F"] span,
+  body.cme-theme-dark .email-container td[bgcolor="#0A192F"] strong,
+  body.cme-theme-dark .email-container td[bgcolor="#0A192F"] a,
+  body.cme-theme-dark .email-container td[bgcolor="#071f2c"] p,
+  body.cme-theme-dark .email-container td[bgcolor="#071f2c"] span,
+  body.cme-theme-dark .email-container td[bgcolor="#071f2c"] strong,
+  body.cme-theme-dark .email-container td[bgcolor="#071f2c"] a,
+  body.cme-theme-dark .email-container td[bgcolor="#153336"] p,
+  body.cme-theme-dark .email-container td[bgcolor="#153336"] span,
+  body.cme-theme-dark .email-container td[bgcolor="#153336"] strong,
+  body.cme-theme-dark .email-container td[bgcolor="#153336"] a,
+  body.cme-theme-dark .email-container td[bgcolor="#101f2b"] p,
+  body.cme-theme-dark .email-container td[bgcolor="#101f2b"] span,
+  body.cme-theme-dark .email-container td[bgcolor="#101f2b"] strong,
+  body.cme-theme-dark .email-container td[bgcolor="#101f2b"] a {
+    color: #e8f4f8 !important;
+  }
+  body.cme-theme-light .brand-primary,
+  body.cme-theme-light .brand-primary td {
+    background: #2FADE0 !important;
+    border-color: #2FADE0 !important;
+    background-image: linear-gradient(#2FADE0, #2FADE0) !important;
+  }
+  body.cme-theme-light .brand-primary a,
+  body.cme-theme-light .primary-cta-link {
+    color: #06283a !important;
+  }
+  #cme-preview-modal {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 9999999;
+    inset: 0;
+    display: none;
     align-items: center;
     justify-content: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 18px;
+    background: rgba(7, 31, 44, 0.72);
+    z-index: 1000000;
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   }
-  #cme-analytics-modal.active { display: flex; }
-  .modal-content {
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 680px;
-    max-height: 88vh;
-    overflow-y: auto;
-    padding: 28px;
-    color: #f8fafc;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    position: relative;
-  }
-  .modal-close {
-    position: absolute;
-    top: 18px; right: 18px;
-    background: #1e293b;
-    color: #94a3b8;
-    border: none;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .modal-close:hover { color: #fff; background: #334155; }
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin: 20px 0;
-  }
-  .metric-card {
-    background: #1e293b;
-    padding: 14px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    text-align: center;
-  }
-  .metric-val {
-    font-size: 20px;
-    font-weight: 700;
-    color: #38bdf8;
-    margin-top: 4px;
-  }
-  .metric-label {
-    font-size: 10px;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .insights-box {
-    background: rgba(99, 102, 241, 0.1);
-    border-left: 4px solid #6366f1;
-    padding: 14px 18px;
+  #cme-preview-modal.cme-active { display: flex; }
+  #cme-preview-modal .cme-modal-box {
+    width: min(640px, 100%);
+    max-height: 86vh;
+    overflow: auto;
+    background: #ffffff;
+    color: #0c2530;
     border-radius: 8px;
-    margin-top: 16px;
+    padding: 22px;
+    position: relative;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.32);
+  }
+  #cme-preview-modal .cme-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid #dce7eb;
+    background: #f6fafb;
+    color: #0c2530;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  #cme-preview-modal h2 {
+    margin: 0 38px 10px 0;
+    font-size: 21px;
+    line-height: 1.3;
+  }
+  #cme-preview-modal p {
+    margin: 0 0 12px;
+    color: #60727b;
     font-size: 13px;
-    line-height: 1.6;
-    color: #e0e7ff;
+    line-height: 1.7;
   }
-
-  /* MEDIA QUERIES FOR TABLET & MOBILE BREAKPOINTS */
-  @media (max-width: 900px) {
-    #cme-hub-header .campaign-title-badge span:first-child {
-      max-width: 140px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+  #cme-preview-modal .cme-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 16px 0;
   }
-
-  @media (max-width: 768px) {
-    #cme-hub-header {
-      padding: 0 12px;
-    }
-    #cme-hub-header .campaign-title-badge {
-      display: none;
-    }
-    .metrics-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
+  #cme-preview-modal .cme-preview-metric {
+    border: 1px solid #dce7eb;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    background: #f8fbfc;
   }
-
-  @media (max-width: 480px) {
-    #cme-hub-header {
-      padding: 0 8px;
-    }
-    #cme-hub-header a.back-btn {
-      padding: 5px 8px;
-      font-size: 11px;
-    }
-    .btn-analytics-toggle {
-      padding: 5px 8px;
-      font-size: 11px;
-    }
-    .campaign-switcher-select {
-      max-width: 110px;
-      font-size: 11px;
-      padding: 4px 6px;
-    }
-    .modal-content {
-      padding: 16px 12px;
-      width: 95%;
-      max-height: 92vh;
-    }
-    .metric-card {
-      padding: 10px 6px;
-    }
-    .metric-val {
-      font-size: 16px;
-    }
-    .metric-label {
-      font-size: 9px;
-    }
+  #cme-preview-modal .cme-preview-metric span {
+    display: block;
+    color: #60727b;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  #cme-preview-modal .cme-preview-metric strong {
+    display: block;
+    margin-top: 5px;
+    color: #0c2530;
+    font-size: 14px;
+  }
+  @media (max-width: 760px) {
+    #cme-preview-header { padding: 0 8px; }
+    #cme-preview-header .cme-title { display: none; }
+    #cme-preview-header .cme-theme-toggle { display: none; }
+    #cme-preview-header select { max-width: 140px; font-size: 11px; }
+    #cme-preview-header .cme-back,
+    #cme-preview-header .cme-notes { font-size: 11px; padding: 7px 8px; }
+    #cme-preview-modal .cme-preview-grid { grid-template-columns: 1fr; }
   }
 </style>
-
-<div id="cme-hub-header">
-  <a href="https://cme-brevo-hub.vercel.app" class="back-btn">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Brevo Email Hub
-  </a>
-
-  <div class="campaign-title-badge">
-    <span>#2 , #23-#24_brevo: Utility Intelligence</span>
-    <span class="status-tag tag-sent">SENT</span>
+<div id="cme-preview-header">
+  <a class="cme-back" href="../index.html">Back to hub</a>
+  <div class="cme-title">
+    <span>Campaign 02: Live Utility Intelligence</span>
+    <span class="cme-status">Sent</span>
   </div>
-
-  <div class="header-actions">
-    <button class="btn-analytics-toggle" onclick="toggleAnalyticsModal()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-      Brevo Insights
-    </button>
-    <select class="campaign-switcher-select" onchange="if(this.value){ window.location.assign(this.value); }">
-      <option value="">Switch Campaign...</option>
-      <option value="https://cme-brevo-campaign-1.vercel.app">#1 , #12-#20_brevo: Product Intro</option>
-      <option value="https://cme-brevo-campaign-2.vercel.app" selected>#2 , #23-#24_brevo: Utility Intelligence</option>
-      <option value="https://cme-brevo-campaign-3.vercel.app">#3 , #26-#27_brevo: GCC Industrial AI</option>
-      <option value="https://cme-brevo-campaign-4.vercel.app">#4 , #29_brevo: Water Anomaly Leak Alerts</option>
-      <option value="./../04_campaign_4_savings_proof/index.html">#5: Savings Proof & Meter Validation</option>
-      <option value="./../05_campaign_5_meter_backed_savings/index.html">#6: Meter Backed Savings Briefing</option>
-      <option value="./../06_campaign_6_cooling_bill_trail/index.html">#7: Cooling Bill Audit Trail</option>
-      <option value="./../08_campaign_8_data_path/index.html">#8: Industrial Data Path Architecture</option>
+  <div class="cme-actions">
+    <div class="cme-theme-toggle" aria-label="Preview mode">
+      <button class="cme-theme-button" type="button" data-cme-theme="dark">Dark mode</button>
+      <button class="cme-theme-button" type="button" data-cme-theme="light">Light</button>
+    </div>
+    <button class="cme-notes" type="button" onclick="document.getElementById('cme-preview-modal').classList.add('cme-active')">Review notes</button>
+    <select onchange="cmeSwitchCampaign(this)">
+      <option value="https://cme-brevo-editorial-review.vercel.app/08_campaign_8_gas_shutoff_path/">Campaign 08: Gas Alarms Need a Clear Emergency Action Plan</option><option value="https://cme-brevo-editorial-review.vercel.app/09_campaign_9_clamp_on_retrofit/">Campaign 09: Lower Cooling Bills Don&#39;t Prove Retrofit Savings</option><option value="https://cme-brevo-editorial-review.vercel.app/10_campaign_10_iaq_alarm_ownership/">Campaign 10: Who Acts on an Indoor Air Alert?</option><option value="https://cme-brevo-editorial-review.vercel.app/11_campaign_11_ot_control_window/">Campaign 11: Vendor Access Should End With the Job</option><option value="https://cme-brevo-editorial-review.vercel.app/13_campaign_13_silent_meter/">Campaign 13: A Silent Meter Can Become a Billing Guess</option><option value="https://cme-brevo-editorial-review.vercel.app/14_campaign_14_after_hours_load/">Campaign 14: What Runs After the Building Empties?</option><option value="https://cme-brevo-editorial-review.vercel.app/15_campaign_15_water_alert_closure/">Campaign 15: A Water Alert Is Not a Closed Case</option><option value="https://cme-brevo-editorial-review.vercel.app/16_campaign_16_gateway_outage/">Campaign 16: When a Gateway Fails, Who Owns the Gap?</option><option value="../01_campaign_1_original/">Campaign 01: Connect meters, billing, monitoring and control</option><option value="../02_campaign_2_newsletter/" selected>Campaign 02: Why live utility intelligence is replacing monthly reads</option><option value="../03_campaign_3_report_confidence/">Campaign 03: The GCC&#39;s Industrial AI Shift Has Entered the Execution Phase</option><option value="../04_campaign_4_water_anomaly/">Campaign 04: The First Leak Signal Should Not Be the Water Bill</option><option value="../05_campaign_5_meter_backed_savings/">Campaign 05: Meter-Backed Savings</option><option value="../06_campaign_6_utility_bills_traceable_reads/">Campaign 06: Utility Bills Need Traceable Reads</option><option value="../07_campaign_7_data_path/">Campaign 07: Choose the Data Path Before the Device</option><option value="https://cme-wetex-2026.vercel.app/mobile-review/">Campaign 12: Meet ConnectME at WETEX 2026</option>
     </select>
   </div>
 </div>
-
-<!-- ANALYTICS MODAL -->
-<div id="cme-analytics-modal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="toggleAnalyticsModal()">&times;</button>
-    <h2 style="margin:0 0 6px 0; font-size: 20px; color:#f8fafc;">Campaign 2: Live Utility Intelligence</h2>
-    <p style="margin:0; font-size: 13px; color: #94a3b8;">Subject: <i>"Why live utility intelligence is replacing monthly reads"</i></p>
-
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-label">Delivered</div>
-        <div class="metric-val" style="color:#38bdf8;">2,369</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Unique Open Rate</div>
-        <div class="metric-val" style="color:#34d399;">37.91%</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Click-to-Open (CTOR)</div>
-        <div class="metric-val" style="color:#a78bfa;">2.78%</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Hard Bounce Rate</div>
-        <div class="metric-val" style="color:#f87171;">0.00%</div>
-      </div>
+<div id="cme-preview-modal">
+  <div class="cme-modal-box">
+    <button class="cme-close" type="button" onclick="document.getElementById('cme-preview-modal').classList.remove('cme-active')">&times;</button>
+    <h2>Campaign 02: Live Utility Intelligence</h2>
+    <p><strong>Status:</strong> Sent</p>
+    <p><strong>Subject:</strong> "Why live utility intelligence is replacing monthly reads"</p>
+    <p><strong>Audience:</strong> Utility, FM and asset operations leaders</p>
+    <p><strong>Focus:</strong> Live utility intelligence replacing monthly reads.</p>
+    <div class="cme-preview-grid">
+        <div class="cme-preview-metric"><span>Delivered</span><strong>2,369</strong></div>
+        <div class="cme-preview-metric"><span>Open rate</span><strong>37.91%</strong></div>
+        <div class="cme-preview-metric"><span>CTOR</span><strong>2.78%</strong></div>
     </div>
-
-    <div class="insights-box">
-      <strong>💡 Brevo Performance Insight:</strong><br/>
-      Consistently high open rates from operations teams comparing monthly vs live reads.
-    </div>
-
-    <div style="margin-top:20px; font-size:12px; color:#64748b; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-      <span>Sent Date: 2026-06-23</span>
-      <span>Unsubscribes: 0</span>
-      <a href="https://cme-brevo-campaign-2.vercel.app" target="_blank" style="color:#38bdf8; text-decoration:none; font-weight:600;">🔗 Standalone Vercel Link</a>
-    </div>
+    <p style="border-left:4px solid #24aeda; background:#eef9fc; padding:13px 15px; color:#17323d; border-radius:6px;">Strong subject pattern: practical, current and not promotional. This informed the short subject style used in the approval designs.</p>
   </div>
 </div>
-
 <script>
-  function toggleAnalyticsModal() {
-    const modal = document.getElementById('cme-analytics-modal');
-    modal.classList.toggle('active');
-  }
+  (function() {
+    function currentTheme() {
+      return new URLSearchParams(window.location.search).get('theme') === 'light' ? 'light' : 'dark';
+    }
+
+    function applyTheme(mode) {
+      document.body.classList.toggle('cme-theme-light', mode === 'light');
+      document.body.classList.toggle('cme-theme-dark', mode === 'dark');
+      document.documentElement.setAttribute('data-cme-preview-theme', mode);
+      document.querySelectorAll('[data-cme-theme]').forEach(function(button) {
+        button.classList.toggle('cme-active', button.getAttribute('data-cme-theme') === mode);
+      });
+    }
+
+    window.cmeSetPreviewTheme = function(mode) {
+      var normalized = mode === 'light' ? 'light' : 'dark';
+      var url = new URL(window.location.href);
+      if (normalized === 'light') {
+        url.searchParams.set('theme', 'light');
+      } else {
+        url.searchParams.set('theme', 'dark');
+      }
+      window.history.replaceState(null, '', url.toString());
+      applyTheme(normalized);
+    };
+
+    window.cmeSwitchCampaign = function(select) {
+      if (!select.value) return;
+      var url = new URL(select.value, window.location.href);
+      if (currentTheme() === 'light') {
+        url.searchParams.set('theme', 'light');
+      } else {
+        url.searchParams.set('theme', 'dark');
+      }
+      window.location.assign(url.toString());
+    };
+
+    document.querySelectorAll('[data-cme-theme]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        window.cmeSetPreviewTheme(button.getAttribute('data-cme-theme'));
+      });
+    });
+
+    applyTheme(currentTheme());
+  })();
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      var modal = document.getElementById('cme-preview-modal');
+      if (modal) modal.classList.remove('cme-active');
+    }
+  });
 </script>
 
 </body>

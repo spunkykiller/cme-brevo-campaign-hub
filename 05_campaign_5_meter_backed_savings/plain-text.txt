@@ -1,20 +1,20 @@
-THE SAVINGS NUMBER NEEDS A METER BEHIND IT
+METER-BACKED SAVINGS
 
-Dubai's efficiency targets make measurement quality an operating control.
+Dubai DSM makes savings credible only when each claim traces back to field data.
 
-The Dubai Demand Side Management Strategy targets savings of at least 30% by 2030 and 50% by 2050. The operating question is whether every claimed saving can be traced through a complete proof chain:
+Dubai's DSM programme puts measurement in the middle of efficiency work. For asset teams, the board-level question is simple: can the saving be traced from baseline to field reading to approval?
 
-Meter -> Gateway -> Validation -> Measurement and verification -> Decision
+Baseline -> Meter -> Validate -> Report -> Approve
 
 BOARDROOM MOVE
-Before approving the payback, ask who owns the baseline, the exceptions, and the evidence trail.
+Before the saving enters a board pack, make the baseline, exceptions and meter ownership visible.
 
 Sources:
-https://dubaisce.gov.ae/en/dsmstrategy2050/
+https://dubaisce.gov.ae/en/taqati/
 https://www.mediaoffice.ae/en/news/2020/Jan/27-01/Ahmed-bin-Saeed-issues-Directive-on-Dubai-demand-side-management-strategy-2030-update
 
 ABOUT CONNECTME
-ConnectME connects smart meters, AMR/MDMS, utility billing, gateways, and energy management into one traceable operating layer.
+ConnectME connects smart meters, gateways, AMR/MDMS, utility billing and energy management into a traceable operating layer.
 
 Continue the conversation:
 https://calendly.com/connectme_solutions/30min
