@@ -383,8 +383,8 @@
   </header>
 
   <section class="stats" aria-label="Hub summary">
-    <div class="stat"><span>Not scheduled</span><strong>1</strong></div>
-    <div class="stat"><span>Scheduled</span><strong>7</strong></div>
+    <div class="stat"><span>Not scheduled</span><strong>0</strong></div>
+    <div class="stat"><span>Scheduled</span><strong>8</strong></div>
     <div class="stat"><span>Previous campaigns</span><strong>8</strong></div>
   </section>
 
@@ -601,27 +601,19 @@
           <button class="button secondary" type="button" data-modal="16_campaign_16_gateway_outage">Notes</button>
           <a class="button secondary" href="https://cme-brevo-editorial-review.vercel.app/16_campaign_16_gateway_outage/?theme=light" target="_blank" rel="noreferrer">Public link</a>
         </div>
-      </article></div>
-  </section>
-
-  <section class="section" id="awaiting-approval">
-    <div class="section-head">
-      <h2>On Hold</h2>
-    </div>
-    <p class="status-note">Last Brevo status check: 23 Nov 2026, 9:41 PM IST. Held drafts have no production send date.</p>
-    <div class="campaign-grid">
+      </article>
 
       <article class="campaign-card">
         <div class="card-head">
           <span class="card-id">Campaign 08</span>
-          <span class="status-pill status-review">On hold</span>
+          <span class="status-pill status-scheduled">Scheduled</span>
         </div>
         <h3>The Gas Meter, the Reading and the Valve</h3>
         <p class="focus">Gas pulse metering and relay control</p>
+        <p class="send-date">Scheduled 17 Dec 2026, 10:00 AM GST (UTC+4)</p>
 
 
 
-        <p class="draft-date">Held for later; Brevo draft, no send date</p>
 
         <div class="metrics" style="--metric-count: 2">
             <div class="metric">
@@ -639,7 +631,16 @@
           <button class="button secondary" type="button" data-modal="08_campaign_8_gas_shutoff_path">Notes</button>
           <a class="button secondary" href="https://cme-brevo-editorial-review.vercel.app/08_campaign_8_gas_shutoff_path/?theme=light" target="_blank" rel="noreferrer">Public link</a>
         </div>
-      </article>
+      </article></div>
+  </section>
+
+  <section class="section" id="awaiting-approval">
+    <div class="section-head">
+      <h2>On Hold</h2>
+    </div>
+    <p class="status-note">Last Brevo status check: 23 Nov 2026, 9:46 PM IST.</p>
+    <div class="campaign-grid">
+
     </div>
   </section>
 
@@ -938,6 +939,7 @@
     "onHold": false,
     "brevoId": 41,
     "sendAt": "24 Nov 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-11-24T10:00:00.000+04:00",
     "plannedSendAt": null,
     "plannedSort": null,
     "sentOn": null,
@@ -966,6 +968,7 @@
     "onHold": false,
     "brevoId": 42,
     "sendAt": "26 Nov 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-11-26T10:00:00.000+04:00",
     "plannedSendAt": null,
     "plannedSort": null,
     "sentOn": null,
@@ -994,6 +997,7 @@
     "onHold": false,
     "brevoId": 43,
     "sendAt": "1 Dec 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-12-01T10:00:00.000+04:00",
     "plannedSendAt": null,
     "plannedSort": null,
     "sentOn": null,
@@ -1022,6 +1026,7 @@
     "onHold": false,
     "brevoId": 48,
     "sendAt": "3 Dec 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-12-03T10:00:00.000+04:00",
     "plannedSendAt": null,
     "plannedSort": null,
     "sentOn": null,
@@ -1050,6 +1055,7 @@
     "onHold": false,
     "brevoId": 49,
     "sendAt": "8 Dec 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-12-08T10:00:00.000+04:00",
     "plannedSendAt": null,
     "plannedSort": null,
     "sentOn": null,
@@ -1078,6 +1084,7 @@
     "onHold": false,
     "brevoId": 50,
     "sendAt": "10 Dec 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-12-10T10:00:00.000+04:00",
     "plannedSendAt": null,
     "plannedSort": null,
     "sentOn": null,
@@ -1106,6 +1113,7 @@
     "onHold": false,
     "brevoId": 51,
     "sendAt": "15 Dec 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-12-15T10:00:00.000+04:00",
     "plannedSendAt": null,
     "plannedSort": null,
     "sentOn": null,
@@ -1129,12 +1137,14 @@
     "folder": "08_campaign_8_gas_shutoff_path",
     "title": "The Gas Meter, the Reading and the Valve",
     "subject": "The Gas Meter, the Reading and the Valve",
-    "status": "On hold",
-    "statusClass": "status-review",
-    "onHold": true,
+    "status": "Scheduled",
+    "statusClass": "status-scheduled",
+    "onHold": false,
     "brevoId": 40,
-    "sendAt": null,
+    "sendAt": "17 Dec 2026, 10:00 AM GST (UTC+4)",
+    "scheduledSort": "2026-12-17T10:00:00.000+04:00",
     "plannedSendAt": null,
+    "plannedSort": null,
     "sentOn": null,
     "audience": "Asset owners, facilities and utility operations teams",
     "focus": "Gas pulse metering and relay control",
